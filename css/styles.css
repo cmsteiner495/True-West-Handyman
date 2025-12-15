@@ -16,6 +16,9 @@
 
   --radius: 14px;
   --shadow: 0 14px 40px rgba(0,0,0,.12);
+
+  --header-pad-y: 14px;
+  --header-logo-h: 64px;
 }
 
 *{ box-sizing:border-box; }
@@ -77,13 +80,14 @@ a:hover{ text-decoration: underline; }
   background: rgba(245,241,230,.86);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+  min-height: calc(var(--header-logo-h) + (var(--header-pad-y) * 2));
 }
 .header-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap: 1rem;
-  padding: clamp(.85rem, 2vw, 1.05rem) 0;
+  padding: var(--header-pad-y) 0;
 }
 .header-left{ flex: 0 0 auto; }
 .header-center{
@@ -100,8 +104,8 @@ a:hover{ text-decoration: underline; }
   gap: 12px;
 }
 .brand-logo{
-  height: clamp(34px, 3.2vw, 46px);
-  max-height: 48px;
+  height: var(--header-logo-h);
+  max-height: 72px;
   width: auto;
   display:block;
   image-rendering: auto;
@@ -467,9 +471,17 @@ a:hover{ text-decoration: underline; }
 .muted{ opacity: .7; }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 1024px){
+  .nav-links{ gap: clamp(22px, 3vw, 40px); }
+}
+
 @media (max-width: 768px){
-  .header-row{ padding: .85rem 0; }
-  .brand-logo{ height: clamp(32px, 8vw, 38px); }
+  :root{
+    --header-logo-h: 44px;
+    --header-pad-y: 12px;
+  }
+  .header-row{ padding: var(--header-pad-y) 0; }
+  .brand-logo{ height: var(--header-logo-h); }
   .site-nav{ display:none; }
   .header-actions{ gap: .6rem; }
   .icon-btn{ display:none; }
