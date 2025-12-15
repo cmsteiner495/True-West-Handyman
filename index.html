@@ -9,54 +9,74 @@
 </head>
 
 <body>
-  <!-- Top header -->
-  <header class="site-header">
-    <div class="container header-row">
-      <div class="header-left">
-        <a class="brand" href="#home">
-          <!-- Replace with your logo -->
-          <img class="brand-logo" src="img/TWHlogo.png" alt="True West Handyman logo" />
-        </a>
-      </div>
+  <div class="sticky-shell">
+    <!-- Top header -->
+    <header class="site-header">
+      <div class="container header-row">
+        <div class="header-left">
+          <a class="brand" href="#home">
+            <!-- Replace with your logo -->
+            <img class="brand-logo" src="img/TWHlogo.png" alt="True West Handyman logo" />
+          </a>
+        </div>
 
-      <div class="header-center">
-        <nav class="site-nav header-nav" aria-label="Primary">
-          <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
+        <div class="header-center">
+          <nav class="site-nav header-nav" aria-label="Primary">
+            <ul class="nav-links">
+              <li><a href="#home" class="nav-link">Home</a></li>
+              <li><a href="#about" class="nav-link">About</a></li>
+              <li><a href="#services" class="nav-link">Services</a></li>
+              <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
 
-      <div class="header-right">
-        <div class="header-actions">
-          <!-- Replace placeholder URLs with real profile links when ready -->
-          <a class="icon-btn" href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <img src="img/facebookicon.png" alt="Facebook" />
-          </a>
-          <a class="icon-btn" href="https://www.google.com/search?q=True+West+Handyman+Colorado+Springs" target="_blank" rel="noopener noreferrer" aria-label="Google">
-            <img src="img/googleicon.png" alt="Google" />
-          </a>
-          <a class="icon-btn" href="https://nextdoor.com/" target="_blank" rel="noopener noreferrer" aria-label="Nextdoor">
-            <img src="img/nextdooricon.webp" alt="Nextdoor" />
-          </a>
-          <a class="btn btn-primary" href="#contact">Hire Us</a>
-          <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-            <span></span><span></span><span></span>
-          </button>
+        <div class="header-right">
+          <div class="header-actions">
+            <!-- Replace placeholder URLs with real profile links when ready -->
+            <a class="icon-btn" href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="img/facebookicon.png" alt="Facebook" class="icon-img" />
+            </a>
+            <a class="icon-btn" href="https://www.google.com/search?q=True+West+Handyman+Colorado+Springs" target="_blank" rel="noopener noreferrer" aria-label="Google">
+              <img src="img/googleicon.png" alt="Google" class="icon-img" />
+            </a>
+            <a class="icon-btn" href="https://nextdoor.com/" target="_blank" rel="noopener noreferrer" aria-label="Nextdoor">
+              <img src="img/nextdooricon.webp" alt="Nextdoor" class="icon-img" />
+            </a>
+            <a class="btn btn-primary" href="#contact">Hire Us</a>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+              <svg class="menu-toggle__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <g class="menu-toggle__bars">
+                  <line x1="4" y1="7" x2="20" y2="7" />
+                  <line x1="4" y1="12" x2="20" y2="12" />
+                  <line x1="4" y1="17" x2="20" y2="17" />
+                </g>
+                <g class="menu-toggle__close">
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                </g>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-      <a href="#home" class="mobile-link">Home</a>
-      <a href="#about" class="mobile-link">About</a>
-      <a href="#services" class="mobile-link">Services</a>
-      <a href="#contact" class="mobile-link">Contact</a>
-    </div>
-  </header>
+      <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#services" class="mobile-link">Services</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+      </div>
+    </header>
+
+    <nav class="quicklink-nav" aria-label="Quick links">
+      <div class="container quicklink-row">
+        <a class="quicklink" href="#reviews">Reviews</a>
+        <a class="quicklink" href="#portfolio">Portfolio</a>
+        <a class="quicklink" href="#faqs">FAQs</a>
+      </div>
+    </nav>
+  </div>
 
   <!-- HERO -->
   <main id="home">
@@ -74,14 +94,6 @@
       </div>
     </section>
 
-
-    <nav class="quicklink-nav" aria-label="Quick links">
-      <div class="container quicklink-row">
-        <a class="quicklink" href="#reviews">Reviews</a>
-        <a class="quicklink" href="#portfolio">Portfolio</a>
-        <a class="quicklink" href="#faqs">FAQs</a>
-      </div>
-    </nav>
 
     <!-- REVIEWS -->
     <section id="reviews" class="section has-overlay reviews-section">
@@ -189,7 +201,8 @@
           <p class="section-subtitle">A few recent projects. Swap these images/titles with real work.</p>
         </div>
 
-        <div class="portfolio-grid">
+        <div class="portfolio-carousel">
+          <div class="portfolio-track" aria-live="polite">
           <figure class="portfolio-item">
             <img src="img/portfolio-1.jpg" alt="Project 1" />
             <figcaption>Custom Wooden Baby Gate Installation</figcaption>
@@ -206,10 +219,12 @@
             <img src="img/portfolio-4.jpg" alt="Project 4" />
             <figcaption>Professional Moving Assistance</figcaption>
           </figure>
+          </div>
+          <div class="carousel-dots" role="tablist" aria-label="Portfolio slides"></div>
         </div>
 
-        <div class="center">
-          <a class="btn btn-outline" href="#" target="_blank" rel="noreferrer">View All on Yelp</a>
+        <div class="center portfolio-cta">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">More Projects</a>
         </div>
       </div>
     </section>
@@ -235,6 +250,11 @@
             <h4>Are you insured?</h4>
             <p>We carry full coverage and bring 30+ years of professional experience to every job.</p>
           </article>
+        </div>
+
+        <div class="faqs-cta">
+          <p>Have other questions? Feel free to reach out.</p>
+          <a class="btn btn-primary" href="#contact">Contact Us</a>
         </div>
       </div>
     </section>
