@@ -78,7 +78,7 @@ a:hover{ text-decoration: underline; }
 .site-header{
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000;
   background: rgba(245,241,230,.86);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
@@ -96,7 +96,7 @@ a:hover{ text-decoration: underline; }
   flex: 1 1 auto;
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-end;
 }
 .header-right{
   flex: 0 0 auto;
@@ -292,16 +292,15 @@ a:hover{ text-decoration: underline; }
 
 /* ---------- Quicklink nav ---------- */
 .quicklink-nav{
-  position: relative;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: rgba(255,255,255,.72);
-  transition: box-shadow 180ms ease, background 180ms ease;
-  z-index: 45;
-}
-.quicklink-nav.is-sticky{
   position: sticky;
   top: var(--header-height);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.9);
+  transition: box-shadow 180ms ease, background 180ms ease;
+  z-index: 999;
+}
+.quicklink-nav.is-sticky{
   background: rgba(245,241,230,.96);
   box-shadow: 0 12px 26px rgba(0,0,0,0.08);
   backdrop-filter: blur(8px);
