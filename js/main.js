@@ -10,6 +10,10 @@
   const reviewModalDialog = document.querySelector('.review-modal__dialog');
   const reviewModalClose = document.querySelector('.review-modal__close');
   const reviewCards = document.querySelectorAll('.review-card');
+  const quicklinks = document.querySelectorAll('.quicklink');
+  const trackedSections = ['reviews', 'portfolio', 'faqs']
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
 
   const closeReviewModal = () => {
     if (!reviewModal) return;
@@ -91,9 +95,54 @@
     document.documentElement.style.setProperty('--quicklink-height', `${quicklinkHeight}px`);
   };
 
+  const setActiveQuicklink = (id) => {
+    quicklinks.forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      const targetId = href.replace('#', '');
+      link.classList.toggle('is-active', targetId === id);
+    });
+  };
+
+  const handleScrollSpy = () => {
+    const headerHeight = header?.getBoundingClientRect().height || 0;
+    const quicklinkHeight = quicklinkNav?.getBoundingClientRect().height || 0;
+    const marker = headerHeight + quicklinkHeight + 16;
+
+    let activeId = trackedSections[0]?.id;
+    let closestDelta = Number.POSITIVE_INFINITY;
+
+    trackedSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const topDiff = rect.top - marker;
+      const bottomDiff = rect.bottom - marker;
+
+      if (topDiff <= 0 && bottomDiff >= 0) {
+        activeId = section.id;
+        closestDelta = 0;
+      } else if (Math.abs(topDiff) < closestDelta) {
+        closestDelta = Math.abs(topDiff);
+        activeId = section.id;
+      }
+    });
+
+    if (activeId) {
+      setActiveQuicklink(activeId);
+    }
+  };
+
   setOffsets();
-  window.addEventListener('resize', setOffsets);
-  window.addEventListener('load', setOffsets);
+  handleScrollSpy();
+  window.addEventListener('resize', () => {
+    setOffsets();
+    handleScrollSpy();
+  });
+  window.addEventListener('load', () => {
+    setOffsets();
+    handleScrollSpy();
+  });
+  window.addEventListener('scroll', () => {
+    window.requestAnimationFrame(handleScrollSpy);
+  });
 
   reviewCards.forEach((card) => {
     card.addEventListener('click', () => openReviewModal(card));
