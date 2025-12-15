@@ -17,11 +17,18 @@
         <img class="brand-logo" src="img/TWHlogo.png" alt="True West Handyman logo" />
       </a>
 
-      <nav class="top-nav" aria-label="Primary">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <nav class="site-nav" aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
       </nav>
 
       <div class="header-actions">
@@ -30,11 +37,6 @@
         <a class="icon-btn" href="#" aria-label="Compass">✳</a>
         <a class="btn btn-primary" href="#contact">Hire Us</a>
       </div>
-
-      <!-- Mobile menu icon (no JS; purely visual placeholder) -->
-      <button class="menu-btn" aria-label="Open menu" type="button">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
@@ -310,9 +312,6 @@
     </footer>
   </main>
 
-  <script>
-    // tiny helper for footer year (optional)
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
