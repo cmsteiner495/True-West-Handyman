@@ -81,7 +81,7 @@ a:hover{ text-decoration: underline; }
   align-items:center;
   justify-content:space-between;
   gap: 1rem;
-  padding: .85rem 0;
+  padding: .7rem 0;
 }
 .brand-logo{
   height: 54px;
@@ -96,7 +96,7 @@ a:hover{ text-decoration: underline; }
 }
 .nav-links{
   display:flex;
-  gap: 1.2rem;
+  gap: clamp(14px, 2vw, 28px);
   align-items:center;
   list-style: none;
   margin: 0;
@@ -151,6 +151,7 @@ a:hover{ text-decoration: underline; }
   min-height: clamp(420px, 60vh, 640px);
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 
   /* Your image */
   background-image:
@@ -165,11 +166,13 @@ a:hover{ text-decoration: underline; }
 
 .hero-overlay{
   width: min(1120px, 92vw);
-  margin: 0 auto;
+  margin-right: auto;
+  margin-left: clamp(16px, 5vw, 64px);
 
   /* Left-side overlay panel */
   max-width: 560px;
   padding: 2.25rem 0;
+  text-align: left;
 }
 
 .hero-title{
