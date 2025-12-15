@@ -14,6 +14,12 @@
   const trackedSections = ['reviews', 'portfolio', 'faqs']
     .map((id) => document.getElementById(id))
     .filter(Boolean);
+  const stickyShell = document.querySelector('.sticky-shell');
+  const quicklinkNav = document.querySelector('.quicklink-nav');
+  const hero = document.querySelector('.hero');
+  const portfolioTrack = document.querySelector('.portfolio-track');
+  const portfolioDots = document.querySelector('.carousel-dots');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const closeReviewModal = () => {
     if (!reviewModal) return;
@@ -51,10 +57,24 @@
   }
 
   [...navLinks, ...mobileLinks].forEach((link) => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (event) => {
+      interceptAnchor(event, link);
       if (!desktopMQ.matches) {
         closeMenu();
       }
+    });
+  });
+
+  quicklinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      interceptAnchor(event, link);
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+      if (event.defaultPrevented) return;
+      interceptAnchor(event, anchor);
     });
   });
 
@@ -85,14 +105,14 @@
   }
 
   const header = document.querySelector('.site-header');
-  const hero = document.querySelector('.hero');
-  const quicklinkNav = document.querySelector('.quicklink-nav');
 
   const setOffsets = () => {
     const headerHeight = header?.getBoundingClientRect().height || 0;
     const quicklinkHeight = quicklinkNav?.getBoundingClientRect().height || 0;
+    const shellHeight = stickyShell?.getBoundingClientRect().height || headerHeight + quicklinkHeight;
     document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
     document.documentElement.style.setProperty('--quicklink-height', `${quicklinkHeight}px`);
+    document.documentElement.style.setProperty('--shell-height', `${shellHeight}px`);
   };
 
   const setActiveQuicklink = (id) => {
@@ -104,9 +124,8 @@
   };
 
   const handleScrollSpy = () => {
-    const headerHeight = header?.getBoundingClientRect().height || 0;
-    const quicklinkHeight = quicklinkNav?.getBoundingClientRect().height || 0;
-    const marker = headerHeight + quicklinkHeight + 16;
+    const shellHeight = stickyShell?.getBoundingClientRect().height || 0;
+    const marker = shellHeight + 12;
 
     let activeId = trackedSections[0]?.id;
     let closestDelta = Number.POSITIVE_INFINITY;
@@ -128,6 +147,28 @@
     if (activeId) {
       setActiveQuicklink(activeId);
     }
+  };
+
+  const smoothScrollTo = (targetId) => {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    const shellHeight = stickyShell?.getBoundingClientRect().height || 0;
+    const offsetTop = window.scrollY + target.getBoundingClientRect().top - shellHeight - 8;
+    window.scrollTo({
+      top: offsetTop,
+      behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+    });
+  };
+
+  const interceptAnchor = (event, anchor) => {
+    const href = anchor.getAttribute('href') || '';
+    if (!href.startsWith('#')) return;
+    const targetId = href.slice(1);
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    event.preventDefault();
+    setActiveQuicklink(targetId);
+    smoothScrollTo(targetId);
   };
 
   setOffsets();
@@ -164,17 +205,91 @@
 
   reviewModalDialog?.setAttribute('tabindex', '-1');
 
-  if (hero && quicklinkNav) {
+  if (hero && stickyShell) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const shouldStick = !entry.isIntersecting;
-          quicklinkNav.classList.toggle('is-sticky', shouldStick);
+          stickyShell.classList.toggle('is-floating', shouldStick);
           setOffsets();
         });
       },
-      { threshold: 0 }
+      { threshold: 0, rootMargin: '-4px 0px 0px 0px' }
     );
     observer.observe(hero);
+  }
+
+  const layeredSections = document.querySelectorAll('.section.has-overlay');
+  if (layeredSections.length) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('is-active', entry.isIntersecting);
+        });
+      },
+      {
+        rootMargin: `-${(stickyShell?.getBoundingClientRect().height || 0) + 32}px 0px -28% 0px`,
+        threshold: [0, 0.25, 0.45, 0.8],
+      }
+    );
+
+    layeredSections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  if (portfolioTrack && portfolioDots) {
+    const cards = Array.from(portfolioTrack.querySelectorAll('.portfolio-item'));
+    const createDots = () => {
+      portfolioDots.innerHTML = '';
+      cards.forEach((card, index) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Go to project ${index + 1}`);
+        dot.addEventListener('click', () => {
+          const targetLeft = card.offsetLeft - (portfolioTrack.clientWidth - card.clientWidth) / 2;
+          portfolioTrack.scrollTo({
+            left: targetLeft,
+            behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+          });
+        });
+        portfolioDots.appendChild(dot);
+      });
+    };
+
+    const updateDots = () => {
+      if (!cards.length) return;
+      const center = portfolioTrack.scrollLeft + portfolioTrack.clientWidth / 2;
+      let closestIndex = 0;
+      let minDelta = Number.POSITIVE_INFINITY;
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft + card.clientWidth / 2;
+        const delta = Math.abs(center - cardCenter);
+        if (delta < minDelta) {
+          minDelta = delta;
+          closestIndex = index;
+        }
+      });
+      const dots = portfolioDots.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, index) => dot.classList.toggle('is-active', index === closestIndex));
+    };
+
+    createDots();
+    updateDots();
+
+    let ticking = false;
+    portfolioTrack.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateDots();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      setOffsets();
+      updateDots();
+    });
   }
 })();
