@@ -56,4 +56,32 @@
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  const header = document.querySelector('.site-header');
+  const hero = document.querySelector('.hero');
+  const quicklinkNav = document.querySelector('.quicklink-nav');
+
+  const setOffsets = () => {
+    const headerHeight = header?.getBoundingClientRect().height || 0;
+    const quicklinkHeight = quicklinkNav?.getBoundingClientRect().height || 0;
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+    document.documentElement.style.setProperty('--quicklink-height', `${quicklinkHeight}px`);
+  };
+
+  setOffsets();
+  window.addEventListener('resize', setOffsets);
+
+  if (hero && quicklinkNav) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const shouldStick = !entry.isIntersecting;
+          quicklinkNav.classList.toggle('is-sticky', shouldStick);
+          setOffsets();
+        });
+      },
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+  }
 })();
