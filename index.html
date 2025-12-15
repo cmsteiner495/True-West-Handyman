@@ -20,11 +20,12 @@
       </div>
 
       <div class="header-center">
-        <nav class="site-nav" aria-label="Primary">
+        <nav class="site-nav header-nav" aria-label="Primary">
           <ul class="nav-links">
-            <li><a href="#reviews" class="nav-link">Reviews</a></li>
-            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="#faqs" class="nav-link">FAQs</a></li>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -59,9 +60,10 @@
     </div>
 
     <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-      <a href="#reviews" class="mobile-link">Reviews</a>
-      <a href="#portfolio" class="mobile-link">Portfolio</a>
-      <a href="#faqs" class="mobile-link">FAQs</a>
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#services" class="mobile-link">Services</a>
+      <a href="#contact" class="mobile-link">Contact</a>
     </div>
   </header>
 
@@ -82,13 +84,53 @@
     </section>
 
 
-    <!-- Secondary quick-links row (the “nav under hero” you mentioned) -->
-    <!-- Keep for now to match site; you can remove later and replace with utility bar. -->
-    <section class="quicklinks" aria-label="Quick links">
-      <div class="container quicklinks-row">
+    <nav class="quicklink-nav" aria-label="Quick links">
+      <div class="container quicklink-row">
         <a class="quicklink" href="#reviews">Reviews</a>
         <a class="quicklink" href="#portfolio">Portfolio</a>
         <a class="quicklink" href="#faqs">FAQs</a>
+      </div>
+    </nav>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h3 class="section-title">About True West Handyman</h3>
+          <p class="section-subtitle">Service-first, veteran-owned craftsmanship rooted in Colorado Springs.</p>
+        </div>
+        <p class="intro-copy">From historic homes to modern offices, we bring 30+ years of disciplined, detail-driven experience. We show up prepared, respect your space, and communicate clearly so every project feels smooth and predictable.</p>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h3 class="section-title">Services</h3>
+          <p class="section-subtitle">Repairs, installs, and finish work that keep your property running safely.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="service-card">
+            <div class="card-body">
+              <h4>Repairs &amp; Maintenance</h4>
+              <p>Drywall patches, trim repair, caulking, and punch-list fixes handled with care.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="card-body">
+              <h4>Installations</h4>
+              <p>Fixtures, shelving, accessibility hardware, and furniture assembled to spec.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="card-body">
+              <h4>Surface Prep</h4>
+              <p>Painting prep, light texturing, and cleanup that leaves your rooms ready to enjoy.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
