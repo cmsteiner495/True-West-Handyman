@@ -4,6 +4,28 @@
   const navLinks = document.querySelectorAll('.nav-links a');
   const mobileLinks = document.querySelectorAll('#mobile-menu a');
   const desktopMQ = window.matchMedia('(min-width: 769px)');
+  const reviewModal = document.getElementById('review-modal');
+  const reviewModalTitle = document.getElementById('review-modal-title');
+  const reviewModalText = document.querySelector('.review-modal__text');
+  const reviewModalDialog = document.querySelector('.review-modal__dialog');
+  const reviewModalClose = document.querySelector('.review-modal__close');
+  const reviewCards = document.querySelectorAll('.review-card');
+
+  const closeReviewModal = () => {
+    if (!reviewModal) return;
+    reviewModal.classList.remove('is-open');
+    reviewModal.setAttribute('aria-hidden', 'true');
+  };
+
+  const openReviewModal = (card) => {
+    if (!reviewModal || !reviewModalTitle || !reviewModalText || !reviewModalDialog) return;
+    const { reviewer = '', full = '' } = card.dataset;
+    reviewModalTitle.textContent = reviewer;
+    reviewModalText.textContent = full;
+    reviewModal.classList.add('is-open');
+    reviewModal.setAttribute('aria-hidden', 'false');
+    reviewModalDialog.focus({ preventScroll: true });
+  };
 
   const closeMenu = () => {
     mobileMenu?.classList.remove('open');
@@ -35,6 +57,7 @@
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeMenu();
+      closeReviewModal();
     }
   });
 
@@ -71,6 +94,26 @@
   setOffsets();
   window.addEventListener('resize', setOffsets);
   window.addEventListener('load', setOffsets);
+
+  reviewCards.forEach((card) => {
+    card.addEventListener('click', () => openReviewModal(card));
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openReviewModal(card);
+      }
+    });
+  });
+
+  reviewModal?.addEventListener('click', (event) => {
+    if (event.target === reviewModal || event.target.classList.contains('review-modal__backdrop')) {
+      closeReviewModal();
+    }
+  });
+
+  reviewModalClose?.addEventListener('click', () => closeReviewModal());
+
+  reviewModalDialog?.setAttribute('tabindex', '-1');
 
   if (hero && quicklinkNav) {
     const observer = new IntersectionObserver(
