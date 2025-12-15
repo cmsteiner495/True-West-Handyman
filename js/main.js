@@ -1,26 +1,30 @@
 (function(){
-  const nav = document.querySelector('.site-nav');
-  const toggle = document.querySelector('.nav-toggle');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
   const navLinks = document.querySelectorAll('.nav-links a');
-  const desktopMQ = window.matchMedia('(min-width: 900px)');
+  const mobileLinks = document.querySelectorAll('#mobile-menu a');
+  const desktopMQ = window.matchMedia('(min-width: 769px)');
 
   const closeMenu = () => {
-    if (nav) {
-      nav.classList.remove('is-open');
-    }
-    if (toggle) {
-      toggle.setAttribute('aria-expanded', 'false');
+    mobileMenu?.classList.remove('open');
+    menuToggle?.classList.remove('is-open');
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', 'false');
     }
   };
 
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
+  const toggleMenu = () => {
+    if (!menuToggle || !mobileMenu) return;
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.classList.toggle('is-open', isOpen);
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  };
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', toggleMenu);
   }
 
-  navLinks.forEach((link) => {
+  [...navLinks, ...mobileLinks].forEach((link) => {
     link.addEventListener('click', () => {
       if (!desktopMQ.matches) {
         closeMenu();
@@ -28,9 +32,15 @@
     });
   });
 
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
   document.addEventListener('click', (event) => {
-    if (!nav || desktopMQ.matches) return;
-    const isClickInside = nav.contains(event.target);
+    if (!mobileMenu || !menuToggle || desktopMQ.matches) return;
+    const isClickInside = mobileMenu.contains(event.target) || menuToggle.contains(event.target);
     if (!isClickInside) {
       closeMenu();
     }
