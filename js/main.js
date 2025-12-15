@@ -70,6 +70,7 @@
 
   setOffsets();
   window.addEventListener('resize', setOffsets);
+  window.addEventListener('load', setOffsets);
 
   if (hero && quicklinkNav) {
     const observer = new IntersectionObserver(
