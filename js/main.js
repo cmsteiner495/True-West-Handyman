@@ -109,7 +109,7 @@
   const setOffsets = () => {
     const headerHeight = header?.getBoundingClientRect().height || 0;
     const quicklinkHeight = quicklinkNav?.getBoundingClientRect().height || 0;
-    const shellHeight = stickyShell?.getBoundingClientRect().height || headerHeight + quicklinkHeight;
+    const shellHeight = (stickyShell?.getBoundingClientRect().height || 0) + quicklinkHeight;
     document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
     document.documentElement.style.setProperty('--quicklink-height', `${quicklinkHeight}px`);
     document.documentElement.style.setProperty('--shell-height', `${shellHeight}px`);
@@ -124,7 +124,7 @@
   };
 
   const handleScrollSpy = () => {
-    const shellHeight = stickyShell?.getBoundingClientRect().height || 0;
+    const shellHeight = (stickyShell?.getBoundingClientRect().height || 0) + (quicklinkNav?.getBoundingClientRect().height || 0);
     const marker = shellHeight + 12;
 
     let activeId = trackedSections[0]?.id;
@@ -152,7 +152,7 @@
   const smoothScrollTo = (targetId) => {
     const target = document.getElementById(targetId);
     if (!target) return;
-    const shellHeight = stickyShell?.getBoundingClientRect().height || 0;
+    const shellHeight = (stickyShell?.getBoundingClientRect().height || 0) + (quicklinkNav?.getBoundingClientRect().height || 0);
     const offsetTop = window.scrollY + target.getBoundingClientRect().top - shellHeight - 8;
     window.scrollTo({
       top: offsetTop,
@@ -211,6 +211,7 @@
         entries.forEach((entry) => {
           const shouldStick = !entry.isIntersecting;
           stickyShell.classList.toggle('is-floating', shouldStick);
+          quicklinkNav?.classList.toggle('is-floating', shouldStick);
           setOffsets();
         });
       },
