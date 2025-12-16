@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact True West Handyman</title>
+  <meta name="description" content="Get in touch with True West Handyman for quotes and questions. Serving Colorado Springs, CO." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Ambient micro-interactions -->
+  <link rel="stylesheet" href="css/ambient.css" />
+</head>
+
+<body>
+  <div class="sticky-shell">
+    <!-- Top header -->
+    <header class="site-header">
+      <div class="container header-row">
+        <div class="header-left">
+          <a class="brand" href="index.html">
+            <!-- Replace with your logo -->
+            <img class="brand-logo" src="img/TWHlogo.png" alt="True West Handyman logo" />
+          </a>
+        </div>
+
+        <div class="header-center">
+          <nav class="site-nav header-nav" aria-label="Primary">
+            <ul class="nav-links">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+              <li><a href="services.html" class="nav-link">Services</a></li>
+              <li><a href="contact.html" class="nav-link" aria-current="page">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="header-right">
+          <div class="header-actions">
+            <a class="icon-btn" href="https://www.facebook.com/share/1K6BQzCDCw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="img/facebookicon.png" alt="Facebook" class="icon-img" />
+            </a>
+            <a class="icon-btn" href="https://share.google/UjmBLKXTjkUoLaVHy" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+              <img src="img/googleicon.png" alt="Google Business Profile" class="icon-img" />
+            </a>
+            <a class="icon-btn" href="https://nextdoor.com/pages/true-west-handyman-llc-colorado-springs-co/" target="_blank" rel="noopener noreferrer" aria-label="Nextdoor">
+              <img src="img/nextdooricon.png" alt="Nextdoor" class="icon-img" />
+            </a>
+
+            <!-- Hover lift -->
+            <a class="btn btn-primary twh-hoverlift" href="contact.html">Hire Us</a>
+
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+              <svg class="menu-toggle__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <g class="menu-toggle__bars">
+                  <line x1="4" y1="7" x2="20" y2="7" />
+                  <line x1="4" y1="12" x2="20" y2="12" />
+                  <line x1="4" y1="17" x2="20" y2="17" />
+                </g>
+                <g class="menu-toggle__close">
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="about.html" class="mobile-link">About</a>
+        <a href="services.html" class="mobile-link">Services</a>
+        <a href="contact.html" class="mobile-link" aria-current="page">Contact</a>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content twh-reveal">
+          <h1 class="hero-title">Contact</h1>
+          <p class="hero-subtitle">Reach out for quotes, questions, or to schedule your next project.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary twh-hoverlift" href="tel:+17193063476">Call or Text</a>
+            <a class="btn btn-secondary twh-hoverlift" href="index.html#portfolio">View Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section has-overlay twh-band-b twh-texture twh-bg-blue">
+      <div class="container">
+        <div class="section-head twh-reveal">
+          <h3 class="section-title">Let's Get Started</h3>
+          <p class="section-subtitle">Serving Colorado Springs, CO and surrounding areas.</p>
+        </div>
+
+        <div class="card-grid twh-reveal">
+          <article class="service-card">
+            <div class="card-body">
+              <h4>Direct Contact</h4>
+              <p><a href="tel:+17193063476">Phone: 719-306-3476</a></p>
+              <p><a href="mailto:dcarneal@truewesthandyman.com">Email: DCARNEAL@TRUEWESTHANDYMAN.COM</a></p>
+              <div class="hero-actions" style="margin-top: 0.75rem;">
+                <a class="btn btn-primary twh-hoverlift" href="tel:+17193063476">Call/Text</a>
+                <a class="btn btn-secondary twh-hoverlift" href="mailto:dcarneal@truewesthandyman.com">Email</a>
+              </div>
+              <p style="margin-top: 1rem; color: var(--muted);">Serving Colorado Springs, CO and surrounding areas.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="card-body">
+              <h4>Send Us a Note</h4>
+              <form id="contact-form" action="#" method="post" class="twh-reveal">
+                <div class="form-field">
+                  <label for="contact-name">Name</label>
+                  <input id="contact-name" name="name" type="text" required />
+                </div>
+                <div class="form-field">
+                  <label for="contact-email">Email or Phone</label>
+                  <input id="contact-email" name="email" type="text" />
+                </div>
+                <div class="form-field">
+                  <label for="contact-message">Message</label>
+                  <textarea id="contact-message" name="message" rows="4" required></textarea>
+                </div>
+                <p style="margin: 0 0 .75rem; color: var(--muted);">Form wiring coming soon.</p>
+                <button class="btn btn-primary twh-hoverlift" type="submit">Send Message</button>
+              </form>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul class="footer-list">
+          <li>Colorado Springs, CO, USA</li>
+          <li><a href="tel:+17193063476">(719) 306-3476 (Call/Text)</a></li>
+          <li class="footer-email"><a href="mailto:dcarneal@truewesthandyman.com">DCARNEAL@TRUEWESTHANDYMAN.COM</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <ul class="footer-list">
+          <li><a href="https://www.facebook.com/share/1K6BQzCDCw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://share.google/UjmBLKXTjkUoLaVHy" target="_blank" rel="noopener noreferrer">Google</a></li>
+          <li><a href="https://nextdoor.com/pages/true-west-handyman-llc-colorado-springs-co/" target="_blank" rel="noopener noreferrer">Nextdoor</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><a href="services.html">Our Services</a></h4>
+        <ul class="footer-list">
+          <li>General Repairs &amp; Maintenance</li>
+          <li>Drywall &amp; Finish Work</li>
+          <li>Furniture Assembly &amp; Installations</li>
+          <li>Painting &amp; Surface Prep</li>
+          <li>Light Fixtures &amp; Minor Electrical</li>
+          <li>Plumbing Fixtures &amp; Minor Repairs</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Open Hours</h4>
+        <ul class="footer-list">
+          <li>Mon–Fri: 7:30 AM – 5:00 PM</li>
+          <li>Saturday: 9:00 AM – 2:00 PM</li>
+          <li>Sunday: Closed</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <small>© 2025 True West Handyman LLC | All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <!-- Ambient micro-interaction logic -->
+  <script src="js/ambient.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = form.elements['name'];
+        const message = form.elements['message'];
+
+        if (name && name.value.trim() && message && message.value.trim()) {
+          window.location.href = 'thank-you.html';
+        } else if (form.reportValidity) {
+          form.reportValidity();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
