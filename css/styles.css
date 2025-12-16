@@ -985,6 +985,107 @@ a:hover{ text-decoration: underline; }
 .footer-bottom small{ display:block; text-align:left; }
 .muted{ opacity: .7; }
 
+/* ---------- About page layouts ---------- */
+.profile-card{
+  display:grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items:center;
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 36px rgba(0,0,0,.08);
+  padding: clamp(1.1rem, 2.5vw, 1.65rem);
+}
+.profile-card__image img{
+  width: 100%;
+  height: auto;
+  display:block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.profile-role{
+  margin: 0 0 .35rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #0c1e3e;
+}
+.profile-contact{
+  display:flex;
+  flex-direction:column;
+  gap: .35rem;
+  margin: 0 0 .85rem;
+}
+.profile-link{
+  color: #0d3c87;
+  font-weight: 700;
+}
+.profile-link:hover{ text-decoration: underline; }
+.profile-bio{
+  margin: 0;
+  color: #12243a;
+  line-height: 1.6;
+}
+.section-cta{
+  margin-top: 1.5rem;
+  display:flex;
+  justify-content:flex-start;
+}
+.section-cta.center{ justify-content:center; }
+.welcome-copy h3{
+  margin-top: 1.5rem;
+  margin-bottom: .35rem;
+}
+.welcome-copy h4{
+  margin: 1.1rem 0 .35rem;
+  color: #0c1e3e;
+}
+.welcome-copy p{
+  color: #12243a;
+  line-height: 1.65;
+  margin: 0 0 .75rem;
+}
+.service-area{
+  display:grid;
+  gap: 1.2rem;
+}
+.map-embed{
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: var(--radius);
+  overflow:hidden;
+  background: rgba(255,255,255,.75);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+.map-embed iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+.service-area-details{
+  display:grid;
+  gap: .35rem;
+  color: #12243a;
+}
+.service-area-details p{
+  margin: 0;
+  display:flex;
+  flex-wrap: wrap;
+  align-items:center;
+  gap: .35rem;
+}
+.service-area-socials span{
+  color: rgba(12,30,62,.45);
+  padding: 0 .2rem;
+}
+.service-area-socials strong{ margin-right: .25rem; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px){
   .nav-links{ gap: clamp(22px, 3vw, 40px); }
@@ -1028,6 +1129,11 @@ a:hover{ text-decoration: underline; }
   }
   .portfolio-item img{ height: 210px; }
   .carousel-dots{ display:flex; }
+  .profile-card{
+    grid-template-columns: 1fr;
+    padding: 1.1rem;
+  }
+  .section-cta .btn{ width: 100%; text-align:center; }
 }
 
 @media (max-width: 540px){
