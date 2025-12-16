@@ -1,0 +1,30 @@
+/* Subtle hover lift */
+@media (hover:hover) {
+  .twh-hoverlift {
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  .twh-hoverlift:hover,
+  .twh-hoverlift:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .twh-hoverlift {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Scroll reveal */
+.twh-reveal {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.twh-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 280ms ease-out, transform 280ms ease-out;
+}
