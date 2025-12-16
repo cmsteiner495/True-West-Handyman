@@ -174,8 +174,8 @@
 }
 
 .portfolio-modal {
-  position: fixed;
-  inset: 0;
+  position: fixed !important;
+  inset: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -184,7 +184,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 200ms ease, visibility 200ms ease;
-  z-index: 900;
+  z-index: 9999;
 }
 
 .portfolio-modal.is-open {
