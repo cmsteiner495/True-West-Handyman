@@ -221,20 +221,20 @@
 
         <div class="portfolio-carousel twh-reveal">
           <div class="portfolio-track" aria-live="polite">
-          <figure class="portfolio-item twh-hoverlift">
-            <img src="img/TWHhomepagerenobg.png" alt="Project 1" />
+          <figure class="portfolio-item twh-hoverlift" data-project="project1" role="button" tabindex="0">
+            <img class="project-card-img" src="img/project1/project1-1.svg" alt="Project 1" />
             <figcaption>Custom Wooden Baby Gate Installation</figcaption>
           </figure>
-          <figure class="portfolio-item twh-hoverlift">
-            <img src="img/TWHsitehero.png" alt="Project 2" />
+          <figure class="portfolio-item twh-hoverlift" data-project="project2" role="button" tabindex="0">
+            <img class="project-card-img" src="img/project2/project2-1.svg" alt="Project 2" />
             <figcaption>Staircase Carpet Repair &amp; Restoration</figcaption>
           </figure>
-          <figure class="portfolio-item twh-hoverlift">
-            <img src="img/TWHhomepagerenobg.png" alt="Project 3" />
+          <figure class="portfolio-item twh-hoverlift" data-project="project3" role="button" tabindex="0">
+            <img class="project-card-img" src="img/project3/project3-1.svg" alt="Project 3" />
             <figcaption>Ikea Bed Frame Assembly</figcaption>
           </figure>
-          <figure class="portfolio-item twh-hoverlift">
-            <img src="img/TWHsitehero.png" alt="Project 4" />
+          <figure class="portfolio-item twh-hoverlift" data-project="project4" role="button" tabindex="0">
+            <img class="project-card-img" src="img/project4/project4-1.svg" alt="Project 4" />
             <figcaption>Professional Moving Assistance</figcaption>
           </figure>
           </div>
@@ -327,6 +327,22 @@
       </div>
     </footer>
   </main>
+
+  <div class="portfolio-modal" id="portfolio-modal" aria-hidden="true">
+    <div class="portfolio-modal__backdrop"></div>
+    <div class="portfolio-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="portfolio-modal-title">
+      <button class="portfolio-modal__close" type="button" aria-label="Close project gallery">×</button>
+      <div class="portfolio-modal__header">
+        <h4 id="portfolio-modal-title"></h4>
+      </div>
+      <div class="portfolio-modal__body">
+        <div class="portfolio-modal__preview">
+          <img id="portfolio-modal-preview" alt="" />
+        </div>
+        <div class="portfolio-modal__thumbs" role="list"></div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
   <!-- Ambient micro-interaction logic -->

@@ -19,11 +19,55 @@
   const hero = document.querySelector('.hero');
   const portfolioTrack = document.querySelector('.portfolio-track');
   const portfolioDots = document.querySelector('.carousel-dots');
+  const portfolioCards = portfolioTrack ? Array.from(portfolioTrack.querySelectorAll('.portfolio-item')) : [];
   const reviewsTrack = document.querySelector('.reviews-track');
   const reviewSlides = reviewsTrack ? Array.from(reviewsTrack.querySelectorAll('.review-slide')) : [];
   const reviewsDots = document.querySelector('.reviews-dots');
   const mobileReviewsMQ = window.matchMedia('(max-width: 768px)');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const portfolioModal = document.getElementById('portfolio-modal');
+  const portfolioModalClose = document.querySelector('.portfolio-modal__close');
+  const portfolioModalPreview = document.getElementById('portfolio-modal-preview');
+  const portfolioModalTitle = document.getElementById('portfolio-modal-title');
+  const portfolioModalThumbs = document.querySelector('.portfolio-modal__thumbs');
+  let lastFocusedPortfolioCard = null;
+
+  const PROJECTS = {
+    project1: {
+      title: 'Custom Wooden Baby Gate Installation',
+      images: [
+        'img/project1/project1-1.svg',
+        'img/project1/project1-2.svg',
+        'img/project1/project1-3.svg',
+      ],
+    },
+    project2: {
+      title: 'Staircase Carpet Repair & Restoration',
+      images: [
+        'img/project2/project2-1.svg',
+        'img/project2/project2-2.svg',
+        'img/project2/project2-3.svg',
+      ],
+    },
+    project3: {
+      title: 'Ikea Bed Frame Assembly',
+      images: [
+        'img/project3/project3-1.svg',
+        'img/project3/project3-2.svg',
+        'img/project3/project3-3.svg',
+      ],
+    },
+    project4: {
+      title: 'Professional Moving Assistance',
+      images: [
+        'img/project4/project4-1.svg',
+        'img/project4/project4-2.svg',
+        'img/project4/project4-3.svg',
+      ],
+    },
+  };
+
+  const rotationState = new Map();
 
   const closeReviewModal = () => {
     if (!reviewModal) return;
@@ -86,6 +130,7 @@
     if (event.key === 'Escape') {
       closeMenu();
       closeReviewModal();
+      closePortfolioModal();
     }
   });
 
@@ -175,6 +220,151 @@
     smoothScrollTo(targetId);
   };
 
+  const ensureProjectOverlay = (img) => {
+    if (!img) return null;
+    const wrapper = img.closest('.portfolio-item');
+    if (!wrapper) return null;
+    let overlay = wrapper.querySelector('.project-card-img--next');
+    if (!overlay) {
+      overlay = document.createElement('img');
+      overlay.className = 'project-card-img project-card-img--next';
+      overlay.alt = '';
+      wrapper.appendChild(overlay);
+    }
+    return overlay;
+  };
+
+  const crossfadeProjectImage = (baseImg, overlayImg, nextSrc) => {
+    if (!baseImg || !nextSrc) return;
+    if (!overlayImg) {
+      baseImg.src = nextSrc;
+      return;
+    }
+
+    overlayImg.src = nextSrc;
+    requestAnimationFrame(() => {
+      overlayImg.classList.add('is-visible');
+      baseImg.classList.add('is-fading-out');
+    });
+
+    overlayImg.addEventListener(
+      'transitionend',
+      () => {
+        baseImg.src = nextSrc;
+        overlayImg.classList.remove('is-visible');
+        baseImg.classList.remove('is-fading-out');
+      },
+      { once: true }
+    );
+  };
+
+  const setPortfolioPreview = (project, src, thumbBtn) => {
+    if (!portfolioModalPreview || !portfolioModalThumbs || !project) return;
+    portfolioModalPreview.src = src;
+    portfolioModalPreview.alt = `${project.title} preview`;
+    const thumbs = portfolioModalThumbs.querySelectorAll('.portfolio-thumb');
+    thumbs.forEach((thumb) => {
+      thumb.classList.toggle('is-active', thumb === thumbBtn);
+    });
+  };
+
+  const closePortfolioModal = () => {
+    if (!portfolioModal) return;
+    portfolioModal.classList.remove('is-open');
+    portfolioModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    portfolioModalThumbs?.replaceChildren();
+    if (lastFocusedPortfolioCard) {
+      lastFocusedPortfolioCard.focus({ preventScroll: true });
+      lastFocusedPortfolioCard = null;
+    }
+  };
+
+  const openPortfolioModal = (projectKey, triggerEl) => {
+    const project = PROJECTS[projectKey];
+    if (!project || !portfolioModal || !portfolioModalTitle || !portfolioModalPreview || !portfolioModalThumbs) return;
+
+    lastFocusedPortfolioCard = triggerEl || null;
+    portfolioModalTitle.textContent = project.title;
+    portfolioModalThumbs.replaceChildren();
+
+    project.images.forEach((src, index) => {
+      const thumbBtn = document.createElement('button');
+      thumbBtn.type = 'button';
+      thumbBtn.className = 'portfolio-thumb';
+      thumbBtn.setAttribute('role', 'listitem');
+      thumbBtn.setAttribute('aria-label', `${project.title} image ${index + 1}`);
+
+      const thumbImg = document.createElement('img');
+      thumbImg.src = src;
+      thumbImg.alt = `${project.title} thumbnail ${index + 1}`;
+      thumbBtn.appendChild(thumbImg);
+
+      thumbBtn.addEventListener('click', () => setPortfolioPreview(project, src, thumbBtn));
+      portfolioModalThumbs.appendChild(thumbBtn);
+
+      if (index === 0) {
+        setPortfolioPreview(project, src, thumbBtn);
+      }
+    });
+
+    portfolioModal.classList.add('is-open');
+    portfolioModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    portfolioModalClose?.focus({ preventScroll: true });
+  };
+
+  const initPortfolioCard = (card) => {
+    const projectKey = card.dataset.project;
+    const project = PROJECTS[projectKey];
+    const img = card.querySelector('.project-card-img');
+    if (!project || !img) return;
+
+    const overlayImg = ensureProjectOverlay(img);
+    const existingIndex = project.images.findIndex((src) => img.getAttribute('src') === src);
+    let currentIndex = existingIndex >= 0 ? existingIndex : 0;
+    img.src = project.images[currentIndex];
+    card.setAttribute('aria-label', project.title);
+
+    const swapImage = () => {
+      currentIndex = (currentIndex + 1) % project.images.length;
+      crossfadeProjectImage(img, overlayImg, project.images[currentIndex]);
+    };
+
+    const startRotation = () => {
+      if (prefersReducedMotion.matches || project.images.length <= 1) return;
+      const existing = rotationState.get(card);
+      if (existing?.timer) {
+        clearInterval(existing.timer);
+      }
+      const timer = window.setInterval(swapImage, 4200);
+      rotationState.set(card, { timer, stop: stopRotation, start: startRotation });
+    };
+
+    const stopRotation = () => {
+      const state = rotationState.get(card);
+      if (state?.timer) {
+        clearInterval(state.timer);
+        state.timer = null;
+      }
+    };
+
+    rotationState.set(card, { timer: null, stop: stopRotation, start: startRotation });
+    startRotation();
+
+    card.addEventListener('mouseenter', stopRotation);
+    card.addEventListener('focus', stopRotation);
+    card.addEventListener('mouseleave', startRotation);
+    card.addEventListener('blur', startRotation);
+    card.addEventListener('click', () => openPortfolioModal(projectKey, card));
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openPortfolioModal(projectKey, card);
+      }
+    });
+  };
+
   setOffsets();
   handleScrollSpy();
   window.addEventListener('resize', () => {
@@ -209,6 +399,26 @@
 
   reviewModalDialog?.setAttribute('tabindex', '-1');
 
+  portfolioCards.forEach((card) => initPortfolioCard(card));
+
+  prefersReducedMotion.addEventListener('change', (event) => {
+    rotationState.forEach((state) => {
+      if (event.matches) {
+        state.stop?.();
+      } else {
+        state.start?.();
+      }
+    });
+  });
+
+  portfolioModal?.addEventListener('click', (event) => {
+    if (event.target === portfolioModal || event.target.classList.contains('portfolio-modal__backdrop')) {
+      closePortfolioModal();
+    }
+  });
+
+  portfolioModalClose?.addEventListener('click', () => closePortfolioModal());
+
   if (hero && stickyShell) {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -242,7 +452,7 @@
   }
 
   if (portfolioTrack && portfolioDots) {
-    const cards = Array.from(portfolioTrack.querySelectorAll('.portfolio-item'));
+    const cards = portfolioCards;
     const createDots = () => {
       portfolioDots.innerHTML = '';
       cards.forEach((card, index) => {
