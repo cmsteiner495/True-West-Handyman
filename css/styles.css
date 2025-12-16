@@ -589,8 +589,13 @@ a:hover{ text-decoration: underline; }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.25rem;
 }
+.service-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
 .service-card{
-  background: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.75);
   border: 1px solid var(--line);
   border-top: 3px solid rgba(10,61,145,0.18);
   border-radius: var(--radius);
@@ -598,12 +603,42 @@ a:hover{ text-decoration: underline; }
   box-shadow: 0 10px 30px rgba(0,0,0,.07);
   display:flex;
   flex-direction:column;
+  height: 100%;
 }
-.card-media img{
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
+.service-card__media{
+  position: relative;
+  height: 180px;
+  background: radial-gradient(circle at 20% 20%, rgba(10,61,145,0.18), rgba(10,61,145,0) 45%),
+    radial-gradient(circle at 80% 0%, rgba(178,34,34,0.18), rgba(178,34,34,0) 42%),
+    linear-gradient(135deg, rgba(245,241,230,0.88), rgba(255,255,255,0.9));
+  overflow:hidden;
 }
+.service-card__media::after{
+  content: "";
+  position: absolute;
+  inset: -12%;
+  background: url('../img/TWHhomepagerenobg.png') center/cover no-repeat;
+  filter: blur(12px) saturate(1.05);
+  opacity: .35;
+  transform: scale(1.05);
+}
+.service-card__icon{
+  position: absolute;
+  inset: 0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: rgba(15,34,60,0.86);
+  color: #fff;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+  backdrop-filter: blur(6px);
+  z-index: 1;
+}
+.service-card__icon svg{ width: 34px; height: 34px; }
 .card-body{
   padding: 1.1rem 1.1rem 1.25rem;
 }
@@ -613,8 +648,8 @@ a:hover{ text-decoration: underline; }
 }
 .card-body ul{
   margin: 0 0 1rem;
-  padding-left: 1.1rem;
-  color: var(--muted);
+  padding-left: 1.25rem;
+  color: #12243a;
 }
 .card-body li{ margin: .25rem 0; }
 
