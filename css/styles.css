@@ -521,9 +521,29 @@ a:hover{ text-decoration: underline; }
 .section.has-overlay.is-active::before{ opacity: 1; }
 .section.has-overlay.is-active::after{ opacity: .78; }
 .section.has-overlay > .container{ position: relative; z-index: 2; }
-.reviews-section::before{ background-image: url("../img/TWHhomepageflagbg.png"); }
-.portfolio-section::before{ background-image: url("../img/TWHhomepagerenobg.png"); }
-.faqs-section::before{ background-image: url("../img/TWHhomepagefaqbg.png"); }
+#reviews,
+#portfolio,
+#faqs{
+  position: relative;
+}
+
+#reviews::before,
+#portfolio::before,
+#faqs::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+  z-index: 0;
+  pointer-events:none;
+}
+
+#reviews::before{ background-image: url("img/TWHhomepageflagbg.png"); }
+#portfolio::before{ background-image: url("img/TWHhomepagerenobg.png"); }
+#faqs::before{ background-image: url("img/TWHhomepagefaqbg.png"); }
 .faqs-section{ background-color: #f0ece1; }
 .section-muted{
   background: rgba(255,255,255,.35);
