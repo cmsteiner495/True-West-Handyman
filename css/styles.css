@@ -490,7 +490,7 @@ a:hover{ text-decoration: underline; }
   --section-bg: none;
   isolation: isolate;
   overflow: hidden;
-  background-color: #f4f0e6;
+  background-color: var(--bg);
 }
 .section.has-overlay::before,
 .section.has-overlay::after{
@@ -541,9 +541,9 @@ a:hover{ text-decoration: underline; }
   pointer-events:none;
 }
 
-#reviews::before{ background-image: url("img/TWHhomepageflagbg.png"); }
-#portfolio::before{ background-image: url("img/TWHhomepagerenobg.png"); }
-#faqs::before{ background-image: url("img/TWHhomepagefaqbg.png"); }
+#reviews::before{ background-image: url("../img/TWHhomepageflagbg.png"); }
+#portfolio::before{ background-image: url("../img/TWHhomepagerenobg.png"); }
+#faqs::before{ background-image: url("../img/TWHhomepagefaqbg.png"); }
 .faqs-section{ background-color: #f0ece1; }
 .section-muted{
   background: rgba(255,255,255,.35);

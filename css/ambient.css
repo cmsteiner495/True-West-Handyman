@@ -114,17 +114,17 @@
 
 /* Sky blue — Reviews */
 .twh-bg-blue {
-  background-color: rgba(72, 122, 170, 0.10);
+  --bg: rgba(43, 108, 176, 0.12);
 }
 
 /* Red rock / canyon — Portfolio */
 .twh-bg-red {
-  background-color: rgba(160, 60, 55, 0.10);
+  --bg: rgba(184, 50, 42, 0.12);
 }
 
 /* Prairie / sunlight — FAQs */
 .twh-bg-yellow {
-  background-color: rgba(210, 180, 90, 0.12);
+  --bg: rgba(214, 164, 0, 0.12);
 }
 
 /* Safety: ensure sections keep spacing */
