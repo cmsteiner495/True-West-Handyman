@@ -36,33 +36,33 @@
     project1: {
       title: 'Custom Wooden Baby Gate Installation',
       images: [
-        'img/project1/project1-1.svg',
-        'img/project1/project1-2.svg',
-        'img/project1/project1-3.svg',
+        'img/project1/placeholder1.png',
+        'img/project1/placeholder2.png',
+        'img/project1/placeholder3.png',
       ],
     },
     project2: {
       title: 'Staircase Carpet Repair & Restoration',
       images: [
-        'img/project2/project2-1.svg',
-        'img/project2/project2-2.svg',
-        'img/project2/project2-3.svg',
+        'img/project2/placeholder1.png',
+        'img/project2/placeholder2.png',
+        'img/project2/placeholder3.png',
       ],
     },
     project3: {
       title: 'Ikea Bed Frame Assembly',
       images: [
-        'img/project3/project3-1.svg',
-        'img/project3/project3-2.svg',
-        'img/project3/project3-3.svg',
+        'img/project3/placeholder1.png',
+        'img/project3/placeholder2.png',
+        'img/project3/placeholder3.png',
       ],
     },
     project4: {
       title: 'Professional Moving Assistance',
       images: [
-        'img/project4/project4-1.svg',
-        'img/project4/project4-2.svg',
-        'img/project4/project4-3.svg',
+        'img/project4/placeholder1.png',
+        'img/project4/placeholder2.png',
+        'img/project4/placeholder3.png',
       ],
     },
   };
