@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>True West Handyman – Handyman Services</title>
   <meta name="description" content="Reliable handyman services for residential and commercial projects. Repairs, installations, and maintenance." />
-
   <link rel="stylesheet" href="css/styles.css" />
-  <!-- Ambient micro-interaction styles -->
+  <!-- Ambient micro-interactions -->
   <link rel="stylesheet" href="css/ambient.css" />
 </head>
 
@@ -18,6 +17,7 @@
       <div class="container header-row">
         <div class="header-left">
           <a class="brand" href="#home">
+            <!-- Replace with your logo -->
             <img class="brand-logo" src="img/TWHlogo.png" alt="True West Handyman logo" />
           </a>
         </div>
@@ -35,18 +35,21 @@
 
         <div class="header-right">
           <div class="header-actions">
-            <a class="icon-btn" href="https://www.facebook.com/share/1K6BQzCDCw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+            <a class="icon-btn" href="https://www.facebook.com/share/1K6BQzCDCw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <img src="img/facebookicon.png" alt="Facebook" class="icon-img" />
             </a>
-            <a class="icon-btn" href="https://share.google/UjmBLKXTjkUoLaVHy" target="_blank" rel="noopener noreferrer">
+            <a class="icon-btn" href="https://share.google/UjmBLKXTjkUoLaVHy" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
               <img src="img/googleicon.png" alt="Google Business Profile" class="icon-img" />
             </a>
-            <a class="icon-btn" href="https://nextdoor.com/pages/true-west-handyman-llc-colorado-springs-co/" target="_blank" rel="noopener noreferrer">
+            <a class="icon-btn" href="https://nextdoor.com/pages/true-west-handyman-llc-colorado-springs-co/" target="_blank" rel="noopener noreferrer" aria-label="Nextdoor">
               <img src="img/nextdooricon.png" alt="Nextdoor" class="icon-img" />
             </a>
+
+            <!-- Hover lift -->
             <a class="btn btn-primary twh-hoverlift" href="#contact">Hire Us</a>
+
             <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-              <svg class="menu-toggle__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <svg class="menu-toggle__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <g class="menu-toggle__bars">
                   <line x1="4" y1="7" x2="20" y2="7" />
                   <line x1="4" y1="12" x2="20" y2="12" />
@@ -62,7 +65,7 @@
         </div>
       </div>
 
-      <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
         <a href="#home" class="mobile-link">Home</a>
         <a href="#about" class="mobile-link">About</a>
         <a href="#services" class="mobile-link">Services</a>
@@ -71,8 +74,8 @@
     </header>
   </div>
 
+  <!-- HERO -->
   <main id="home">
-    <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-content twh-reveal">
@@ -87,32 +90,129 @@
       </div>
     </section>
 
+    <nav class="quicklink-nav" aria-label="Quick links">
+      <div class="container quicklink-row">
+        <a class="quicklink" href="#reviews">Reviews</a>
+        <a class="quicklink" href="#portfolio">Portfolio</a>
+        <a class="quicklink" href="#faqs">FAQs</a>
+      </div>
+    </nav>
+
     <!-- REVIEWS -->
-    <section id="reviews" class="section has-overlay reviews-section">
+    <section id="reviews" class="section has-overlay reviews-section twh-band-b twh-texture">
       <div class="container">
         <h3 class="section-title twh-reveal">What Our Clients Are Saying</h3>
 
         <div class="reviews-carousel twh-reveal">
-          <div class="reviews-track review-grid">
+          <div class="reviews-track review-grid" aria-live="polite">
             <div class="review-slide">
-              <button class="review-card twh-hoverlift" type="button">
-                <p class="review-snippet">Dustin is wonderful. He helped me with a number of projects...</p>
+              <button class="review-card twh-hoverlift" type="button" data-review-id="carissa" data-reviewer="Carissa Shipley" data-full="Dustin is wonderful. He helped me with a number of projects. He was on time, worked hard, and paid attention to detail. He even came back twice after patching drywall to make sure the texture matched perfectly. He was affordable and up-front about any changes in cost. He will be my go-to for any handyman needs.">
+                <div class="review-card__head">
+                  <span class="reviewer">Carissa Shipley</span>
+                  <span class="review-stars" aria-hidden="true">★★★★★</span>
+                  <span class="sr-only">5 out of 5 stars</span>
+                </div>
+                <p class="review-snippet">Dustin is wonderful. He helped me with a number of projects. He was on time, worked hard, and paid attention to detail...</p>
               </button>
-              <button class="review-card twh-hoverlift" type="button">
-                <p class="review-snippet">Dustin has been so great! He is dependable, friendly...</p>
+
+              <button class="review-card twh-hoverlift" type="button" data-review-id="ruth" data-reviewer="Ruth Koenigsamen" data-full="Dustin has been so great! He is dependable, friendly and I trust him completely. His work is thorough and really well done. He has fixed many things for me including a bi-fold door, adding a shelf to my laundry closet, changing my smoke detector, building/painting a ramp and railing extension out my front door, leveling my wash machine, adding grab bars to both showers, and added one to my main entrance that I use every day! He also likes my cat! I have an on-going list for you again, Dustin!!">
+                <div class="review-card__head">
+                  <span class="reviewer">Ruth Koenigsamen</span>
+                  <span class="review-stars" aria-hidden="true">★★★★★</span>
+                  <span class="sr-only">5 out of 5 stars</span>
+                </div>
+                <p class="review-snippet">Dustin has been so great! He is dependable, friendly and I trust him completely. His work is thorough and really well done...</p>
+              </button>
+            </div>
+
+            <div class="review-slide">
+              <button class="review-card twh-hoverlift" type="button" data-review-id="shahnaz" data-reviewer="Shahnaz Uddin" data-full="Dustin was a fantastic contractor to work with! He was extremely respectful of our home, professional in his work, communicated efficiently throughout the week, and quoted us at very reasonable rates. We only have positive things to say about Dustin and would recommend him to anyone looking for small or big projects!">
+                <div class="review-card__head">
+                  <span class="reviewer">Shahnaz Uddin</span>
+                  <span class="review-stars" aria-hidden="true">★★★★★</span>
+                  <span class="sr-only">5 out of 5 stars</span>
+                </div>
+                <p class="review-snippet">Dustin was a fantastic contractor to work with! He was extremely respectful of our home, professional in his work, communicated efficiently...</p>
+              </button>
+
+              <button class="review-card twh-hoverlift" type="button" data-review-id="rosemary" data-reviewer="Rosemary Rice" data-full="Dustin is a pleasant and dependable skilled repair man. He consistently shows up on time and brings exceptional value to the upkeep of my home. His prices are reasonable, and what sets him apart is his ability to fix the problem the first time. I wish I could give him higher than a five-star review for his vast knowledge and the various options he provides to keep my home in top-notch repair. I would definitely schedule more services with him without hesitation.">
+                <div class="review-card__head">
+                  <span class="reviewer">Rosemary Rice</span>
+                  <span class="review-stars" aria-hidden="true">★★★★★</span>
+                  <span class="sr-only">5 out of 5 stars</span>
+                </div>
+                <p class="review-snippet">Dustin is a pleasant and dependable skilled repair man. He consistently shows up on time and brings exceptional value to the upkeep of my home...</p>
+              </button>
+            </div>
+
+            <div class="review-slide">
+              <button class="review-card twh-hoverlift" type="button" data-review-id="cynthia" data-reviewer="Cynthia Franklin" data-full="Dustin has provided home maintenance/repair/construction services at my home for over ten years. The biggest project was a covered patio in my backyard. I would give Dustin the highest recommendation for his services. He is reliable and thorough in his work and cares about doing a good job. He interacts in a pleasant, friendly fashion. He is honest and trustworthy.">
+                <div class="review-card__head">
+                  <span class="reviewer">Cynthia Franklin</span>
+                  <span class="review-stars" aria-hidden="true">★★★★★</span>
+                  <span class="sr-only">5 out of 5 stars</span>
+                </div>
+                <p class="review-snippet">Dustin has provided home maintenance/repair/construction services at my home for over ten years. The biggest project was a covered patio in my backyard...</p>
+              </button>
+
+              <button class="review-card twh-hoverlift" type="button" data-review-id="sohail" data-reviewer="Sohail Chatur" data-full="Dustin was absolutely fantastic to work with! He's a consummate professional...he showed up when he said he would, let us know if he was running late (which was rare), and stayed to work the whole day, as opposed to running from job to job. He was very clean while working, and treated our home like a home. Not to mention, the quality of his work was outstanding! Everything from drywall repair to painting to other random fixes, Dustin was great! We were on a tight timeline, revamping our home before moving, and there were a lot of different things to be done. He did everything on time or ahead of schedule, his prices were fantastic, and the overall experience was the best I've ever had with a contractor, handyman, etc. (though those terms don't do him justice at all)! I highly, highly recommend Dustin for everything from small jobs to big jobs!">
+                <div class="review-card__head">
+                  <span class="reviewer">Sohail Chatur</span>
+                  <span class="review-stars" aria-hidden="true">★★★★★</span>
+                  <span class="sr-only">5 out of 5 stars</span>
+                </div>
+                <p class="review-snippet">Dustin was absolutely fantastic to work with! He's a consummate professional...he showed up when he said he would, let us know if he was running late (which was rare)...</p>
+              </button>
+            </div>
+
+            <div class="review-slide">
+              <button class="review-card twh-hoverlift" type="button" data-review-id="mike" data-reviewer="Mike Harris" data-full="Dustin is a true pro. He repaired trim, fixed a lingering door issue, and refreshed our paint lines so everything looked intentional. He communicates clearly, works clean, and the workmanship is top-notch.">
+                <div class="review-card__head">
+                  <span class="reviewer">Mike Harris</span>
+                  <span class="review-stars" aria-hidden="true">★★★★★</span>
+                  <span class="sr-only">5 out of 5 stars</span>
+                </div>
+                <p class="review-snippet">Dustin is a true pro. He repaired trim, fixed a lingering door issue, and refreshed our paint lines so everything looked intentional...</p>
+              </button>
+
+              <button class="review-card twh-hoverlift" type="button" data-review-id="linda" data-reviewer="Linda Boles" data-full="I appreciated Dustin's calm, professional approach. He installed new fixtures, tightened up our cabinetry, and made sure everything was spotless before he left. Fair pricing and very respectful of our home.">
+                <div class="review-card__head">
+                  <span class="reviewer">Linda Boles</span>
+                  <span class="review-stars" aria-hidden="true">★★★★★</span>
+                  <span class="sr-only">5 out of 5 stars</span>
+                </div>
+                <p class="review-snippet">I appreciated Dustin's calm, professional approach. He installed new fixtures, tightened up our cabinetry, and made sure everything was spotless...</p>
               </button>
             </div>
           </div>
+
+          <div class="reviews-dots" role="tablist" aria-label="Review slides"></div>
         </div>
 
         <div class="reviews-cta twh-reveal">
-          <a class="btn btn-primary twh-hoverlift" href="https://www.google.com/search?q=True+West+Handyman+Colorado+Springs" target="_blank">More Reviews</a>
+          <p>See more feedback from Colorado neighbors on our Google Business Profile.</p>
+          <a class="btn btn-primary twh-hoverlift" href="https://share.google/LNeSDy8N6XSTgvMyS" target="_blank" rel="noreferrer">More Reviews</a>
         </div>
       </div>
     </section>
 
+    <div class="review-modal" id="review-modal" aria-hidden="true">
+      <div class="review-modal__backdrop"></div>
+      <div class="review-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="review-modal-title">
+        <button class="review-modal__close" type="button" aria-label="Close review">×</button>
+        <div class="review-modal__accent"></div>
+        <div class="review-modal__content">
+          <h4 id="review-modal-title"></h4>
+          <div class="review-modal__stars" aria-hidden="true">★★★★★</div>
+          <p class="review-modal__text"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="twh-divider" aria-hidden="true"></div>
+
     <!-- PORTFOLIO -->
-    <section id="portfolio" class="section has-overlay portfolio-section">
+    <section id="portfolio" class="section has-overlay portfolio-section twh-band-a twh-texture">
       <div class="container">
         <div class="section-head twh-reveal">
           <h3 class="section-title">Showcase of Our Work</h3>
@@ -120,26 +220,37 @@
         </div>
 
         <div class="portfolio-carousel twh-reveal">
-          <div class="portfolio-track">
-            <figure class="portfolio-item twh-hoverlift">
-              <img src="img/TWHhomepagerenobg.png" alt="Project" />
-              <figcaption>Custom Wooden Baby Gate Installation</figcaption>
-            </figure>
-            <figure class="portfolio-item twh-hoverlift">
-              <img src="img/TWHsitehero.png" alt="Project" />
-              <figcaption>Professional Moving Assistance</figcaption>
-            </figure>
+          <div class="portfolio-track" aria-live="polite">
+          <figure class="portfolio-item twh-hoverlift">
+            <img src="img/TWHhomepagerenobg.png" alt="Project 1" />
+            <figcaption>Custom Wooden Baby Gate Installation</figcaption>
+          </figure>
+          <figure class="portfolio-item twh-hoverlift">
+            <img src="img/TWHsitehero.png" alt="Project 2" />
+            <figcaption>Staircase Carpet Repair &amp; Restoration</figcaption>
+          </figure>
+          <figure class="portfolio-item twh-hoverlift">
+            <img src="img/TWHhomepagerenobg.png" alt="Project 3" />
+            <figcaption>Ikea Bed Frame Assembly</figcaption>
+          </figure>
+          <figure class="portfolio-item twh-hoverlift">
+            <img src="img/TWHsitehero.png" alt="Project 4" />
+            <figcaption>Professional Moving Assistance</figcaption>
+          </figure>
           </div>
+          <div class="carousel-dots" role="tablist" aria-label="Portfolio slides"></div>
         </div>
 
         <div class="center portfolio-cta twh-reveal">
-          <a class="btn btn-primary twh-hoverlift" href="#">More Projects</a>
+          <a class="btn btn-primary twh-hoverlift" href="#" target="_blank" rel="noreferrer">More Projects</a>
         </div>
       </div>
     </section>
 
+    <div class="twh-divider" aria-hidden="true"></div>
+
     <!-- FAQs -->
-    <section id="faqs" class="section has-overlay faqs-section">
+    <section id="faqs" class="section has-overlay faqs-section twh-band-b twh-texture">
       <div class="container">
         <div class="section-head twh-reveal">
           <h3 class="section-title">FAQs</h3>
@@ -149,17 +260,68 @@
         <div class="faq-list twh-reveal">
           <article class="faq-item">
             <h4>What types of projects do you handle?</h4>
-            <p>General repairs, drywall and finish work, painting prep, furniture assembly, and fixture installs.</p>
+            <p>General repairs, drywall and finish work, painting prep, furniture assembly, and fixture installs for homes, offices, and government sites.</p>
+          </article>
+          <article class="faq-item">
+            <h4>Do you provide estimates?</h4>
+            <p>Yes. Share photos and a brief description, and we’ll provide a clear estimate and schedule confirmation.</p>
+          </article>
+          <article class="faq-item">
+            <h4>Are you insured?</h4>
+            <p>We carry full coverage and bring 30+ years of professional experience to every job.</p>
           </article>
         </div>
 
         <div class="faqs-cta twh-reveal">
+          <p>Have other questions? Feel free to reach out.</p>
           <a class="btn btn-primary twh-hoverlift" href="#contact">Contact Us</a>
         </div>
       </div>
     </section>
 
+    <!-- FOOTER / CONTACT -->
     <footer id="contact" class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="footer-list">
+            <li>Colorado Springs, CO, USA</li>
+            <li><a href="tel:+17193063476">(719) 306-3476 (Call/Text)</a></li>
+            <li class="footer-email"><a href="mailto:dcarneal@truewesthandyman.com">DCARNEAL@TRUEWESTHANDYMAN.COM</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <ul class="footer-list">
+            <li><a href="https://www.facebook.com/share/1K6BQzCDCw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="https://share.google/UjmBLKXTjkUoLaVHy" target="_blank" rel="noopener noreferrer">Google</a></li>
+            <li><a href="https://nextdoor.com/pages/true-west-handyman-llc-colorado-springs-co/" target="_blank" rel="noopener noreferrer">Nextdoor</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4><a href="services.html">Our Services</a></h4>
+          <ul class="footer-list">
+            <li>General Repairs &amp; Maintenance</li>
+            <li>Drywall &amp; Finish Work</li>
+            <li>Furniture Assembly &amp; Installations</li>
+            <li>Painting &amp; Surface Prep</li>
+            <li>Light Fixtures &amp; Minor Electrical</li>
+            <li>Plumbing Fixtures &amp; Minor Repairs</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Open Hours</h4>
+          <ul class="footer-list">
+            <li>Mon–Fri: 7:30 AM – 5:00 PM</li>
+            <li>Saturday: 9:00 AM – 2:00 PM</li>
+            <li>Sunday: Closed</li>
+          </ul>
+        </div>
+      </div>
+
       <div class="container footer-bottom">
         <small>© 2025 True West Handyman LLC | All rights reserved.</small>
       </div>

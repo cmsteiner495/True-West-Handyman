@@ -360,8 +360,8 @@ a:hover{ text-decoration: underline; }
   margin: 0 0 1.25rem;
   font-size: 1.05rem;
   line-height: 1.5;
-  color: #0c1e3e;
-  opacity: .9;
+  color: #050f1e;
+  opacity: 1;
 }
 
 .hero-actions{
