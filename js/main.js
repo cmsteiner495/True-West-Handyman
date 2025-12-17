@@ -52,7 +52,7 @@
       images: buildProjectImages('project1'),
     },
     project2: {
-      title: 'A New Coat of Paint.',
+      title: 'Replacing Old Carpet.',
       images: buildProjectImages('project2'),
     },
     project3: {
@@ -60,7 +60,7 @@
       images: buildProjectImages('project3'),
     },
     project4: {
-      title: 'General Masonry Project.',
+      title: 'Rebuilding a Deck.',
       images: buildProjectImages('project4'),
     },
   };

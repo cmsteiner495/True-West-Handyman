@@ -382,6 +382,14 @@ a:hover{ text-decoration: underline; }
   letter-spacing: -0.02em;
 }
 
+.hero-title__nowrap{
+  display: inline;
+}
+
+@media (min-width: 900px){
+  .hero-title__nowrap{ white-space: nowrap; }
+}
+
 .hero-subtitle{
   margin: 0 0 1.25rem;
   font-size: 1.05rem;
