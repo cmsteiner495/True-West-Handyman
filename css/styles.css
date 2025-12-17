@@ -19,6 +19,10 @@
   --btn: var(--co-red);
   --btnText: #fff;
 
+  --focus-color: var(--co-gold);
+  --focus-outline: 3px solid var(--focus-color);
+  --focus-offset: 3px;
+
   --soft-overlay: linear-gradient(
     to right,
     rgba(245,241,230,.96) 0%,
@@ -62,6 +66,14 @@ main{ position: relative; overflow: visible; }
 img{ max-width:100%; display:block; }
 a{ color: inherit; text-decoration: none; }
 a:hover{ text-decoration: underline; }
+.focus-visible,
+:where(a, button, .btn, input, select, textarea, summary, .nav-link, .mobile-link, .quicklink, .menu-toggle, .icon-btn, .portfolio-item, .review-card, .service-card, .portfolio-thumb, .review-modal__close, .portfolio-modal__close):focus-visible{
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-offset);
+  border-radius: inherit;
+  box-shadow: 0 0 0 3px rgba(10,61,145,0.18);
+}
+
 .sr-only{
   position: absolute;
   width: 1px;
@@ -217,13 +229,6 @@ a:hover{ text-decoration: underline; }
   box-shadow: 0 0 0 2px rgba(10,61,145,0.28);
   text-decoration: none;
 }
-.nav-link:focus-visible,
-.mobile-link:focus-visible,
-.quicklink:focus-visible{
-  outline: none;
-}
-
-
 .menu-toggle{
   display:none;
   width: 44px;
@@ -250,7 +255,6 @@ a:hover{ text-decoration: underline; }
 }
 .menu-toggle__close line{ transform-origin: center; }
 .menu-toggle__close{ opacity: 0; transform: scale(0.92); transition: opacity 200ms var(--ease-smooth), transform 200ms var(--ease-smooth); }
-.menu-toggle:focus-visible{ outline: 2px solid rgba(0,0,0,0.35); outline-offset: 2px; }
 .menu-toggle.is-open{ background: rgba(10,61,145,0.08); border-color: rgba(10,61,145,0.35); }
 .menu-toggle.is-open .menu-toggle__bars line{ opacity: 0; transform: translateY(0); }
 .menu-toggle.is-open .menu-toggle__close{ opacity: 1; transform: scale(1); }
@@ -280,14 +284,12 @@ a:hover{ text-decoration: underline; }
   filter: brightness(1.05);
   transform: translateY(-1px) scale(1.03);
 }
-.icon-btn:focus-visible{ outline: 2px solid var(--co-gold); outline-offset: 2px; }
 .icon-btn svg{ width: 18px; height: 18px; }
 .icon-btn img{
   display:block;
-  width: 72%;
-  height: 72%;
-  object-fit: contain;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.08));
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .mobile-menu{
@@ -660,6 +662,7 @@ a:hover{ text-decoration: underline; }
   z-index: 1;
 }
 .service-card__icon svg{ width: 34px; height: 34px; }
+.service-card__icon img{ width: 42px; height: 42px; display:block; }
 .card-body{
   padding: 1.15rem 1.25rem 1.35rem;
 }
@@ -672,6 +675,18 @@ a:hover{ text-decoration: underline; }
   align-items: center;
   text-align: center;
   gap: 0.35rem;
+}
+.contact-direct .card-body{
+  gap: .6rem;
+}
+@media (min-width: 900px){
+  .contact-direct .card-body{
+    text-align: center;
+    align-items: center;
+  }
+  .contact-direct h4{ font-size: 1.35rem; }
+  .contact-direct p{ font-size: 1.05rem; }
+  .contact-direct .hero-actions{ justify-content: center; }
 }
 .card-body ul{
   margin: 0 0 1rem;
@@ -704,7 +719,6 @@ a:hover{ text-decoration: underline; }
 .form-field textarea:focus-visible{
   border-color: rgba(10,61,145,0.5);
   box-shadow: 0 0 0 3px rgba(10,61,145,0.12);
-  outline: none;
 }
 .form-field textarea{ resize: vertical; min-height: 140px; }
 .form-field.full-width{ grid-column: 1 / -1; }
@@ -726,11 +740,6 @@ a:hover{ text-decoration: underline; }
   .service-card:focus-within .service-card__icon{
     filter: brightness(1.05);
   }
-}
-
-.service-card:focus-visible{
-  outline: 2px solid var(--co-blue);
-  outline-offset: 3px;
 }
 
 @media (max-width: 720px){
@@ -851,10 +860,6 @@ a:hover{ text-decoration: underline; }
   flex-direction:column;
   gap: .45rem;
   position: relative;
-}
-.review-card:focus-visible{
-  outline: 2px solid var(--co-gold);
-  outline-offset: 3px;
 }
 .review-card:hover{
   transform: translateY(-4px);
@@ -979,7 +984,6 @@ a:hover{ text-decoration: underline; }
   transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
 }
 .review-modal__close:hover{ background: rgba(10,61,145,0.1); border-color: rgba(10,61,145,0.36); transform: translateY(-1px); }
-.review-modal__close:focus-visible{ outline: 2px solid var(--co-gold); outline-offset: 3px; }
 .review-modal__stars{ color: var(--co-gold); font-weight: 800; letter-spacing: .08em; }
 .review-modal__text{ margin: 0; color: #0c1e3e; line-height: 1.6; }
 

@@ -240,12 +240,6 @@
   z-index: 5;
 }
 
-.portfolio-modal__close:focus-visible,
-.portfolio-thumb:focus-visible {
-  outline: 3px solid rgba(10, 61, 145, 0.35);
-  outline-offset: 2px;
-}
-
 .portfolio-modal__body {
   display: grid;
   grid-template-columns: 2fr 1fr;
