@@ -1,0 +1,315 @@
+/* =========================================================
+   MICRO-MOTION
+   ========================================================= */
+
+/* Subtle hover lift */
+@media (hover:hover) {
+  .twh-hoverlift {
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  .twh-hoverlift:hover,
+  .twh-hoverlift:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .twh-hoverlift {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Scroll reveal */
+.twh-reveal {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.twh-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 280ms ease-out, transform 280ms ease-out;
+}
+
+/* =========================================================
+   SOFT SECTION BANDING (break up the cream without “busy”)
+   ========================================================= */
+
+.twh-band-a { background: #f5f1e6; } /* existing base */
+.twh-band-b { background: #faf7f1; } /* subtle alternate */
+
+/* =========================================================
+   TEXTURE (safe: always behind content)
+   ========================================================= */
+
+.twh-texture {
+  position: relative;
+}
+
+.twh-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* bump slightly so it reads, still premium */
+  opacity: 0.032; /* was 0.018 */
+  mix-blend-mode: multiply;
+
+  background:
+    radial-gradient(circle at 12% 18%, rgba(0,0,0,0.9) 0.4px, transparent 0.6px),
+    radial-gradient(circle at 72% 64%, rgba(0,0,0,0.9) 0.35px, transparent 0.55px),
+    radial-gradient(circle at 38% 78%, rgba(0,0,0,0.9) 0.3px, transparent 0.5px),
+    radial-gradient(circle at 88% 22%, rgba(0,0,0,0.9) 0.25px, transparent 0.45px);
+  background-size: 180px 180px, 220px 220px, 260px 260px, 300px 300px;
+  background-position: 0 0, 40px 60px, 90px 20px, 120px 120px;
+}
+
+/* Ensure section content is always above the texture overlay */
+.twh-texture > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   SECTION DIVIDERS (real horizontal lines you can insert)
+   ========================================================= */
+
+.twh-divider {
+  width: 100%;
+  height: 2px;
+  margin: clamp(48px, 6vw, 72px) 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(25, 50, 80, 0.34),
+    transparent
+  );
+  border-radius: 999px;
+}
+
+/* Optional: stronger divider if you ever want it */
+.twh-divider--strong {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(25, 50, 80, 0.44),
+    transparent
+  );
+}
+
+/* Reduced motion: no special handling needed here */
+@media (prefers-reduced-motion: reduce) {
+  .twh-divider {
+    /* stays visible */
+  }
+}
+/* ================================
+   Section background color tints
+   (Colorado-inspired, subtle)
+   ================================ */
+
+/* Sky blue — Reviews */
+.twh-bg-blue {
+  --bg: rgba(43, 108, 176, 0.12);
+}
+
+/* Red rock / canyon — Portfolio */
+.twh-bg-red {
+  --bg: rgba(184, 50, 42, 0.12);
+}
+
+/* Prairie / sunlight — FAQs */
+.twh-bg-yellow {
+  --bg: rgba(214, 164, 0, 0.12);
+}
+
+/* Safety: ensure sections keep spacing */
+.twh-bg-blue,
+.twh-bg-red,
+.twh-bg-yellow {
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+/* Remove background images so the tint can show through */
+#reviews.section.has-overlay,
+#portfolio.section.has-overlay,
+#faqs.section.has-overlay {
+  background-image: none !important;
+}
+
+#reviews.section.has-overlay::before,
+#portfolio.section.has-overlay::before,
+#faqs.section.has-overlay::before {
+  background-image: none !important;
+}
+
+/* Portfolio rotations + modal */
+.portfolio-item {
+  position: relative;
+}
+
+.project-card-img {
+  transition: opacity 320ms ease;
+  display: block;
+}
+
+.project-card-img--next {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease;
+}
+
+.project-card-img--next.is-visible {
+  opacity: 1;
+}
+
+.project-card-img.is-fading-out {
+  opacity: 0;
+}
+
+.portfolio-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease, visibility 200ms ease;
+  z-index: 9999;
+}
+
+.portfolio-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.portfolio-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 30, 62, 0.35);
+  backdrop-filter: blur(2px);
+}
+
+.portfolio-modal__dialog {
+  position: relative;
+  background: #fffdf8;
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16);
+  width: min(960px, 94vw);
+  max-height: calc(100vh - 48px);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid rgba(10, 61, 145, 0.12);
+}
+
+.portfolio-modal__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 2.5rem;
+}
+
+.portfolio-modal__close {
+  position: sticky;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #0a3d91;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(10, 61, 145, 0.25);
+  align-self: flex-end;
+  z-index: 5;
+}
+
+.portfolio-modal__body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+.portfolio-modal__preview {
+  background: rgba(10, 61, 145, 0.05);
+  border-radius: 14px;
+  padding: 0.5rem;
+  border: 1px solid rgba(10, 61, 145, 0.12);
+}
+
+.portfolio-modal__preview img {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.portfolio-modal__thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.portfolio-thumb {
+  border: 1px solid rgba(10, 61, 145, 0.18);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0.2rem;
+  background: #fff;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.portfolio-thumb.is-active {
+  border-color: #b8322a;
+  box-shadow: 0 8px 18px rgba(184, 50, 42, 0.18);
+  transform: translateY(-2px);
+}
+
+.portfolio-thumb img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .portfolio-modal__body {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-modal__preview img {
+    max-height: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card-img,
+  .project-card-img--next,
+  .portfolio-modal {
+    transition: none !important;
+  }
+}
