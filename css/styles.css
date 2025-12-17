@@ -661,8 +661,13 @@ a:hover{ text-decoration: underline; }
   backdrop-filter: blur(6px);
   z-index: 1;
 }
-.service-card__icon svg{ width: 34px; height: 34px; }
-.service-card__icon img{ width: 42px; height: 42px; display:block; }
+.service-card__icon img{
+  width: 46px;
+  height: 46px;
+  display:block;
+  object-fit: contain;
+}
+.service-icon-img{ object-fit: contain; }
 .card-body{
   padding: 1.15rem 1.25rem 1.35rem;
 }
@@ -677,15 +682,21 @@ a:hover{ text-decoration: underline; }
   gap: 0.35rem;
 }
 .contact-direct .card-body{
-  gap: .6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  justify-content: center;
+  min-height: 100%;
 }
 @media (min-width: 900px){
   .contact-direct .card-body{
     text-align: center;
     align-items: center;
+    gap: .85rem;
+    padding: 1.4rem 1.5rem 1.6rem;
   }
-  .contact-direct h4{ font-size: 1.35rem; }
-  .contact-direct p{ font-size: 1.05rem; }
+  .contact-direct h4{ font-size: 1.4rem; }
+  .contact-direct p{ font-size: 1.08rem; }
   .contact-direct .hero-actions{ justify-content: center; }
 }
 .card-body ul{
