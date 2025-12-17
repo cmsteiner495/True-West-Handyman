@@ -268,17 +268,54 @@
         },
       ];
 
-      const SERVICE_ICON_SRC = 'img/handymanicon.png';
+      const SERVICE_ICONS = {
+        'General Repairs & Maintenance': {
+          src: 'img/icons/wrench.svg',
+          alt: 'Wrench icon for General Repairs & Maintenance',
+        },
+        'Drywall & Finish Work': {
+          src: 'img/icons/hammer.svg',
+          alt: 'Hammer icon for Drywall & Finish Work',
+        },
+        'Furniture Assembly & Installations': {
+          src: 'img/icons/armchair.svg',
+          alt: 'Armchair icon for Furniture Assembly & Installations',
+        },
+        'Painting & Surface Prep': {
+          src: 'img/icons/paint-roller.svg',
+          alt: 'Paint roller icon for Painting & Surface Prep',
+        },
+        'Light Fixtures & Minor Electrical': {
+          src: 'img/icons/lightbulb.svg',
+          alt: 'Lightbulb icon for Light Fixtures & Minor Electrical',
+        },
+        'Plumbing Fixtures & Minor Repairs': {
+          src: 'img/icons/drop.svg',
+          alt: 'Water drop icon for Plumbing Fixtures & Minor Repairs',
+        },
+        'TV Mounting': {
+          src: 'img/icons/television.svg',
+          alt: 'Television icon for TV Mounting',
+        },
+        'Gutter Cleaning': {
+          src: 'img/icons/leaf.svg',
+          alt: 'Leaf icon for Gutter Cleaning',
+        },
+        'General Construction': {
+          src: 'img/icons/hard-hat.svg',
+          alt: 'Hard hat icon for General Construction',
+        },
+      };
 
-      const createIcon = () => {
+      const createIcon = (title) => {
+        const icon = SERVICE_ICONS[title];
         const img = document.createElement('img');
-        img.src = SERVICE_ICON_SRC;
-        img.alt = '';
+        img.src = icon.src;
+        img.alt = icon.alt;
         img.loading = 'lazy';
         img.decoding = 'async';
         img.width = 72;
         img.height = 72;
-        img.setAttribute('aria-hidden', 'true');
         img.classList.add('service-icon-img');
         return img;
       };
@@ -295,8 +332,7 @@
 
         const iconWrap = document.createElement('span');
         iconWrap.className = 'service-card__icon';
-        iconWrap.setAttribute('aria-hidden', 'true');
-        iconWrap.appendChild(createIcon());
+        iconWrap.appendChild(createIcon(service.title));
 
         media.appendChild(iconWrap);
 
