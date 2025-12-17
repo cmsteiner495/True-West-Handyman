@@ -253,6 +253,12 @@
       overlay = document.createElement('img');
       overlay.className = 'project-card-img project-card-img--next';
       overlay.alt = '';
+      overlay.loading = 'lazy';
+      overlay.decoding = 'async';
+      const width = img.getAttribute('width');
+      const height = img.getAttribute('height');
+      if (width) overlay.setAttribute('width', width);
+      if (height) overlay.setAttribute('height', height);
       wrapper.appendChild(overlay);
     }
     return overlay;
@@ -322,6 +328,10 @@
       const thumbImg = document.createElement('img');
       thumbImg.src = src;
       thumbImg.alt = `${project.title} thumbnail ${index + 1}`;
+      thumbImg.loading = 'lazy';
+      thumbImg.decoding = 'async';
+      thumbImg.width = 240;
+      thumbImg.height = 180;
       thumbBtn.appendChild(thumbImg);
 
       thumbBtn.addEventListener('click', () => setPortfolioPreview(project, src, thumbBtn));
