@@ -32,38 +32,36 @@
   const portfolioModalThumbs = document.querySelector('.portfolio-modal__thumbs');
   let lastFocusedPortfolioCard = null;
 
+  const PLACEHOLDER_FILES = ['placeholder1.png', 'placeholder2.png', 'placeholder3.png', 'placeholder4.png'];
+
+  const projectImageMap = {
+    project1: PLACEHOLDER_FILES,
+    project2: PLACEHOLDER_FILES,
+    project3: PLACEHOLDER_FILES.filter((file) => file !== 'placeholder4.png'),
+    project4: PLACEHOLDER_FILES.filter((file) => file !== 'placeholder4.png'),
+  };
+
+  const buildProjectImages = (projectKey) =>
+    (projectImageMap[projectKey] || PLACEHOLDER_FILES)
+      .map((file) => `img/${projectKey}/${file}`)
+      .filter(Boolean);
+
   const PROJECTS = {
     project1: {
       title: 'Custom Wooden Baby Gate Installation',
-      images: [
-        'img/project1/placeholder1.png',
-        'img/project1/placeholder2.png',
-        'img/project1/placeholder3.png',
-      ],
+      images: buildProjectImages('project1'),
     },
     project2: {
       title: 'Staircase Carpet Repair & Restoration',
-      images: [
-        'img/project2/placeholder1.png',
-        'img/project2/placeholder2.png',
-        'img/project2/placeholder3.png',
-      ],
+      images: buildProjectImages('project2'),
     },
     project3: {
       title: 'Ikea Bed Frame Assembly',
-      images: [
-        'img/project3/placeholder1.png',
-        'img/project3/placeholder2.png',
-        'img/project3/placeholder3.png',
-      ],
+      images: buildProjectImages('project3'),
     },
     project4: {
       title: 'Professional Moving Assistance',
-      images: [
-        'img/project4/placeholder1.png',
-        'img/project4/placeholder2.png',
-        'img/project4/placeholder3.png',
-      ],
+      images: buildProjectImages('project4'),
     },
   };
 
