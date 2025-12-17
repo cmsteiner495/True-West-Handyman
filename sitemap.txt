@@ -1,0 +1,5 @@
+/
+/about.html
+/services.html
+/contact.html
+/thank-you.html

@@ -202,6 +202,12 @@ a:hover{ text-decoration: underline; }
   border-radius: 999px;
   transition: background-color 160ms ease, color 160ms ease, opacity 160ms ease;
 }
+.nav-link.is-active{
+  background: #111;
+  color: #fff;
+  opacity: 1;
+  box-shadow: 0 0 0 2px rgba(10,61,145,0.22);
+}
 .nav-link:hover{ opacity: 1; }
 .nav-link:hover,
 .nav-link:focus-visible,
@@ -301,8 +307,16 @@ a:hover{ text-decoration: underline; }
   padding: 14px clamp(20px, 4vw, 36px);
   font-weight: 700;
   opacity: .9;
+  border-radius: 14px;
+  transition: background-color 160ms ease, color 160ms ease, opacity 160ms ease;
 }
 .mobile-link:hover{ opacity: 1; }
+.mobile-link.is-active{
+  background: rgba(0,0,0,0.08);
+  color: #0a3d91;
+  opacity: 1;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+}
 
 /* ---------- Hero ---------- */
 .hero{
@@ -328,6 +342,12 @@ a:hover{ text-decoration: underline; }
   background: linear-gradient(90deg, rgba(245,241,230,0.88) 0%, rgba(245,241,230,0.7) 32%, rgba(245,241,230,0.38) 62%, rgba(245,241,230,0.1) 100%);
   z-index: 0;
   pointer-events: none;
+}
+.hero.hero--services{ background-image: url("../img/TWHhomepagerenobg.png"); }
+.hero.hero--contact{ background-image: url("../img/TWHhomepageflagbg.png"); }
+.hero.hero--services::before,
+.hero.hero--contact::before{
+  background: linear-gradient(90deg, rgba(245,241,230,0.92) 0%, rgba(245,241,230,0.76) 30%, rgba(245,241,230,0.46) 60%, rgba(245,241,230,0.16) 100%);
 }
 
 
@@ -648,12 +668,49 @@ a:hover{ text-decoration: underline; }
   font-size: 1.14rem;
   line-height: 1.25;
 }
+.center-card .card-body{
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+}
 .card-body ul{
   margin: 0 0 1rem;
   padding-left: 1.25rem;
   color: #12243a;
 }
 .card-body li{ margin: .3rem 0; }
+
+.form-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem 1.25rem;
+  margin: 0 0 0.75rem;
+}
+.form-field{ display: flex; flex-direction: column; gap: 0.35rem; }
+.form-field label{ font-weight: 700; font-size: .95rem; color: #0f223c; }
+.form-field input,
+.form-field select,
+.form-field textarea{
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 180ms var(--ease-smooth), box-shadow 180ms var(--ease-smooth), transform 180ms var(--ease-smooth);
+}
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible{
+  border-color: rgba(10,61,145,0.5);
+  box-shadow: 0 0 0 3px rgba(10,61,145,0.12);
+  outline: none;
+}
+.form-field textarea{ resize: vertical; min-height: 140px; }
+.form-field.full-width{ grid-column: 1 / -1; }
+.form-note{ margin: 0 0 .5rem; color: var(--muted); }
+.form-status{ min-height: 1.25rem; font-weight: 700; color: #0f223c; }
+.form-status.is-error{ color: #b1341d; }
 
 @media (hover:hover) and (pointer:fine){
   .service-card{

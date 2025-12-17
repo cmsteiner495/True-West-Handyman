@@ -155,6 +155,30 @@
 
   const header = document.querySelector('.site-header');
 
+  const normalizePath = (pathname = '') => {
+    const segments = pathname.split('/').filter(Boolean);
+    const last = segments.pop() || 'index.html';
+    if (last === 'thank-you.html') return 'contact.html';
+    return last || 'index.html';
+  };
+
+  const setActiveNav = () => {
+    const current = normalizePath(window.location.pathname);
+    [...navLinks, ...mobileLinks].forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      const linkPath = normalizePath(new URL(href, window.location.href).pathname);
+      const isActive = linkPath === current || (linkPath === 'index.html' && current === '');
+      link.classList.toggle('is-active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  setActiveNav();
+
   const setOffsets = () => {
     const headerHeight = header?.getBoundingClientRect().height || 0;
     const quicklinkHeight = quicklinkNav?.getBoundingClientRect().height || 0;
