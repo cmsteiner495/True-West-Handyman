@@ -48,19 +48,19 @@
 
   const PROJECTS = {
     project1: {
-      title: 'Custom Wooden Baby Gate Installation',
+      title: 'Fresh Look for a Fading Deck.',
       images: buildProjectImages('project1'),
     },
     project2: {
-      title: 'Staircase Carpet Repair & Restoration',
+      title: 'A New Coat of Paint.',
       images: buildProjectImages('project2'),
     },
     project3: {
-      title: 'Ikea Bed Frame Assembly',
+      title: 'Full Bathroom Remodel.',
       images: buildProjectImages('project3'),
     },
     project4: {
-      title: 'Professional Moving Assistance',
+      title: 'General Masonry Project.',
       images: buildProjectImages('project4'),
     },
   };
