@@ -1,4 +1,5 @@
 (function(){
+  const hasIdentityTokenHash = Boolean(window.__NETLIFY_DISABLE_HASH_HANDLERS__);
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const navLinks = document.querySelectorAll('.nav-links a');
@@ -232,6 +233,7 @@
   };
 
   const interceptAnchor = (event, anchor) => {
+    if (hasIdentityTokenHash) return;
     const href = anchor.getAttribute('href') || '';
     if (!href.startsWith('#')) return;
     const targetId = href.slice(1);
