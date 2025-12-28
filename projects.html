@@ -3,43 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thank You for Contacting True West Handyman</title>
-  <meta name="description" content="Thank you for reaching out to True West Handyman. I will follow up soon about your repair, installation, or project needs." />
-  <link rel="canonical" href="https://www.truewesthandyman.com/thank-you.html" />
+  <title>Projects Gallery | True West Handyman</title>
+  <meta name="description" content="Browse project highlights from True West Handyman. See completed work with titles, descriptions, and image galleries." />
+  <link rel="canonical" href="https://www.truewesthandyman.com/projects.html" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Thank You | True West Handyman (Colorado Springs, CO)" />
-  <meta property="og:description" content="Thank you for contacting True West Handyman in Colorado Springs, CO. I will respond quickly about your repair, installation, or project needs." />
-  <meta property="og:image" content="https://www.truewesthandyman.com/img/TWHhomepagerenobg.png" />
-  <meta property="og:url" content="https://www.truewesthandyman.com/thank-you.html" />
+  <meta property="og:title" content="Projects Gallery | True West Handyman" />
+  <meta property="og:description" content="Browse recent project highlights from True West Handyman in Colorado Springs, CO." />
+  <meta property="og:image" content="https://www.truewesthandyman.com/img/TWHsitehero.png" />
+  <meta property="og:url" content="https://www.truewesthandyman.com/projects.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Thank You | True West Handyman (Colorado Springs, CO)" />
-  <meta name="twitter:description" content="Thank you for contacting True West Handyman in Colorado Springs, CO. I will respond quickly about your repair, installation, or project needs." />
-  <meta name="twitter:image" content="https://www.truewesthandyman.com/img/TWHhomepagerenobg.png" />
+  <meta name="twitter:title" content="Projects Gallery | True West Handyman" />
+  <meta name="twitter:description" content="See completed work with titles, descriptions, and images." />
+  <meta name="twitter:image" content="https://www.truewesthandyman.com/img/TWHsitehero.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="48x48" href="/img/favicon/favicon-48x48.png">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
   <meta name="theme-color" content="#f5f1e6">
   <link rel="stylesheet" href="css/styles.css" />
   <!-- Ambient micro-interactions -->
   <link rel="stylesheet" href="css/ambient.css" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Handyman",
-      "name": "True West Handyman",
-      "url": "https://www.truewesthandyman.com/thank-you.html",
-      "telephone": "719-306-3476",
-      "areaServed": "Colorado Springs, CO",
-      "description": "Owner-operated handyman providing careful repairs, maintenance, and project support with clear communication.",
-      "sameAs": [
-        "https://www.facebook.com/share/1K6BQzCDCw/?mibextid=wwXIfr",
-        "https://share.google/UjmBLKXTjkUoLaVHy",
-        "https://nextdoor.com/pages/true-west-handyman-llc-colorado-springs-co/"
-      ]
-    }
-  </script>
 </head>
 
 <body>
@@ -49,7 +33,6 @@
       <div class="container header-row">
         <div class="header-left">
           <a class="brand" href="index.html">
-            <!-- Replace with your logo -->
             <img class="brand-logo" src="img/TWHlogo.png" alt="True West Handyman logo" width="925" height="856" />
           </a>
         </div>
@@ -78,7 +61,6 @@
               <img src="img/nextdooricon.png" alt="Nextdoor" class="icon-img" width="212" height="212" loading="lazy" decoding="async" />
             </a>
 
-            <!-- Hover lift -->
             <a class="btn btn-primary twh-hoverlift" href="contact.html">Hire Me</a>
 
             <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -109,29 +91,20 @@
   </div>
 
   <main>
-    <section class="section has-overlay twh-band-a twh-texture twh-bg-red">
+    <section class="section has-overlay twh-band-b twh-texture twh-bg-blue">
       <div class="container">
         <div class="section-head twh-reveal">
-          <h1 class="section-title">Thanks — we got your message!</h1>
-          <p class="section-subtitle">We’ll get back to you as soon as possible.</p>
+          <h1 class="section-title">Projects Gallery</h1>
+          <p class="section-subtitle">Owner-updated portfolio of completed work.</p>
         </div>
-
-        <div class="center twh-reveal" style="gap: .75rem; flex-wrap: wrap;">
-          <a class="btn btn-primary twh-hoverlift" href="index.html">Back to Home</a>
-          <a class="btn btn-secondary twh-hoverlift" href="services.html">View Services</a>
-        </div>
+        <p class="section-copy twh-reveal">Browse recent projects, see multiple angles, and read quick notes about the work. New projects are added through the owner admin at <code>/admin</code>.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container card-grid twh-reveal" style="justify-items: center;">
-        <article class="service-card center-card">
-          <div class="card-body">
-            <h4>Need something sooner?</h4>
-            <p><a href="tel:+17193063476">Call/Text: 719-306-3476</a></p>
-            <p><a href="mailto:dcarneal@truewesthandyman.com">Email: DCARNEAL@TRUEWESTHANDYMAN.COM</a></p>
-          </div>
-        </article>
+    <section class="section has-overlay twh-band-a twh-texture twh-bg-red">
+      <div class="container">
+        <div id="projects-status" class="projects-status" role="status" aria-live="polite">Loading projects...</div>
+        <div id="projects-list" class="projects-list" aria-live="polite"></div>
       </div>
     </section>
   </main>
@@ -162,28 +135,27 @@
         <ul class="footer-list">
           <li>General Repairs &amp; Maintenance</li>
           <li>Drywall &amp; Finish Work</li>
-          <li>Furniture Assembly &amp; Installations</li>
-          <li>Painting &amp; Surface Prep</li>
-          <li>Light Fixtures &amp; Minor Electrical</li>
-          <li>Plumbing Fixtures &amp; Minor Repairs</li>
+          <li>Painting Prep &amp; Touch-ups</li>
+          <li>Fixture Installations</li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Open Hours</h4>
+        <h4>Connect</h4>
         <ul class="footer-list">
-          <li>Mon–Fri: 7:30 AM – 5:00 PM</li>
-          <li>Saturday: 9:00 AM – 2:00 PM</li>
-          <li>Sunday: Closed</li>
+          <li><a href="contact.html">Request a quote</a></li>
+          <li><a href="tel:+17193063476">Call or text</a></li>
+          <li><a href="mailto:dcarneal@truewesthandyman.com">Email Dustin</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="container footer-bottom">
-      <small>© 2025 True West Handyman LLC | All rights reserved.</small>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> True West Handyman. All rights reserved.</p>
     </div>
   </footer>
 
+  <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
   <!-- Ambient micro-interaction logic -->
   <script src="js/ambient.js"></script>
