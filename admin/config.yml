@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+
+media_folder: "img/portfolio/uploads"
+public_folder: "/img/portfolio/uploads"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    label_singular: "Project"
+    format: "json"
+    extension: "json"
+    editor:
+      preview: false
+    files:
+      - label: "Projects"
+        name: "projects"
+        file: "content/projects.json"
+        description: "Portfolio projects displayed on the site."
+        fields:
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            label_singular: "Project"
+            summary: "{{fields.title}}"
+            allow_add: true
+            fields:
+              - label: "ID"
+                name: "id"
+                widget: "string"
+                required: true
+                hint: "Short, unique slug (e.g., deck-repair-01)."
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                required: true
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                required: false
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                summary: "Image"
+                field:
+                  label: "Image"
+                  name: "image"
+                  widget: "image"
