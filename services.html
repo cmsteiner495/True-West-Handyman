@@ -364,5 +364,25 @@
   <script src="js/main.js"></script>
   <!-- Ambient micro-interaction logic -->
   <script src="js/ambient.js"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    (function () {
+      const identity = window.netlifyIdentity;
+      if (!identity) return;
+
+      identity.on('init', () => {
+        const hash = window.location.hash || '';
+        if (
+          hash.includes('invite_token') ||
+          hash.includes('recovery_token') ||
+          hash.includes('confirmation_token')
+        ) {
+          identity.open();
+        }
+      });
+
+      identity.init();
+    })();
+  </script>
 </body>
 </html>
