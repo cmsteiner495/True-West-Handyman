@@ -20,9 +20,18 @@ collections:
             widget: "list"
             summary: "{{fields.title}}"
             fields:
-              - { label: "ID", name: "id", widget: "string", required: true }
-              - { label: "Title", name: "title", widget: "string", required: true }
-              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "ID"
+                name: "id"
+                widget: "string"
+                required: true
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                required: true
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                required: false
               - label: "Images"
                 name: "images"
                 widget: "list"
