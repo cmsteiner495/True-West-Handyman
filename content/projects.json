@@ -1,3 +1,12 @@
 {
-  "projects": []
+  "projects": [
+    {
+      "id": "twh project 1",
+      "title": "Finishing Test 1",
+      "description": "awsdasdsadfafsd",
+      "images": [
+        "/img/portfolio/uploads/twh-business-card-round-.png"
+      ]
+    }
+  ]
 }
