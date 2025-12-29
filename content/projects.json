@@ -1,11 +1,21 @@
 {
   "projects": [
     {
-      "id": "twh project 1",
-      "title": "Finishing Test 1",
-      "description": "awsdasdsadfafsd",
+      "id": "001",
+      "title": "Test Project 1",
+      "description": "Desc. for test project 1",
       "images": [
-        "/img/portfolio/uploads/twh-business-card-round-.png"
+        "/img/portfolio/uploads/twh-business-card-round-.png",
+        "/img/portfolio/uploads/TWH Logo.png"
+      ]
+    },
+    {
+      "id": "002",
+      "title": "Test Project 2",
+      "description": "Desc. for Test Project 2",
+      "images": [
+        "/img/portfolio/uploads/handyman-pictures-7qnq84ndqlwbllux.jpg",
+        "/img/portfolio/uploads/TWHsitehero.png"
       ]
     }
   ]
