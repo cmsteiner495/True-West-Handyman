@@ -102,8 +102,9 @@
   };
 
   const normalizeProjects = (data) => {
+    if (!data || typeof data !== 'object') return [];
     if (Array.isArray(data)) return data;
-    if (data && Array.isArray(data.projects)) return data.projects;
+    if (Array.isArray(data.projects)) return data.projects;
     return [];
   };
 

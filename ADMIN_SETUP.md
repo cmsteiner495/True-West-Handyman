@@ -8,5 +8,7 @@ Follow these steps to enable the owner-facing admin panel:
 4. Invite Dustin's email address as a user.
 5. (Optional) Enable any preferred external Identity providers.
 6. Access the admin panel at `https://<site-domain>/admin`.
+7. Ensure Git Gateway is enabled and configured for the **main** branch (Decap CMS targets `main` in `admin/config.yml`).
+8. For invite or password recovery flows, direct users to `/auth.html` so the Netlify Identity modal opens reliably.
 
 > Note: Decap CMS login requires Netlify Identity and Git Gateway. For local development, authentication only works when running with **Netlify Dev**; the public projects gallery still works locally without Identity.
