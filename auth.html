@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Secure Sign-In | True West Handyman</title>
+  <meta name="description" content="Complete your secure sign-in for the True West Handyman admin." />
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/img/favicon/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#f5f1e6">
+  <style>
+    body { font-family: "Helvetica Neue", Arial, sans-serif; background: #f5f1e6; color: #1c1b19; margin: 0; display: grid; place-items: center; min-height: 100vh; padding: 24px; }
+    .card { background: #fff; border-radius: 12px; padding: 32px; max-width: 420px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+    h1 { font-size: 1.5rem; margin: 0 0 12px; }
+    p { margin: 0 0 16px; line-height: 1.5; }
+    .status { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Completing secure sign-in…</h1>
+    <p class="status">If nothing opens automatically, refresh this page or open the link again.</p>
+  </div>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    (function () {
+      const hash = window.location.hash || '';
+      const hasToken = /(invite_token|recovery_token|confirmation_token)=/i.test(hash);
+
+      if (!hasToken) return;
+
+      netlifyIdentity.on('login', () => {
+        setTimeout(() => window.location.replace('/admin/'), 800);
+      });
+
+      netlifyIdentity.init();
+      netlifyIdentity.open('signup');
+    })();
+  </script>
+</body>
+</html>
