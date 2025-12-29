@@ -1,6 +1,9 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
 backend:
-  name: git-gateway
-  branch: main
+  name: github
+  repo: cmsteiner495/True-West-Handyman        # <-- CHANGE THIS (example: cmsteiner495/truewesthandyman)
+  branch: main            # <-- keep as main unless your repo uses master
 
 media_folder: "img/portfolio/uploads"
 public_folder: "/img/portfolio/uploads"
@@ -24,15 +27,21 @@ collections:
                 name: "id"
                 widget: "string"
                 required: true
+
               - label: "Title"
                 name: "title"
                 widget: "string"
                 required: true
+
               - label: "Description"
                 name: "description"
                 widget: "text"
                 required: false
+
               - label: "Images"
                 name: "images"
                 widget: "list"
-                field: { label: "Image", name: "image", widget: "image" }
+                field:
+                  label: "Image"
+                  name: "image"
+                  widget: "image"
